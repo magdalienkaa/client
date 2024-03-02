@@ -1,0 +1,374 @@
+.App {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(
+    135deg,
+    #d5f2d5,
+    #d5f2e9,
+    #d5f2df,
+    #e1f2d5,
+    #d5f1f2
+  );
+  color: black;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Lato", sans-serif;
+}
+
+.auth-form-container,
+.login-form {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-form-container {
+  padding: 2rem;
+  border: 1px solid white;
+  border-radius: 50px;
+  margin: 0.5rem;
+  background: white;
+  width: 300px;
+  box-shadow: 13px 13px 79px #9c9c9c, -13px -13px 79px #ffffff;
+}
+
+label {
+  text-align: left;
+  padding: 0.25rem 0;
+}
+
+input {
+  margin: 0.5rem 0;
+  padding: 1rem;
+  background: white;
+  border-radius: 10px;
+}
+
+button {
+  border: none;
+  background: linear-gradient(
+    135deg,
+    #d5f2d5,
+    #d5f2e9,
+    #d5f2df,
+    #e1f2d5,
+    #d5f1f2
+  );
+  padding: 15px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.link-btn {
+  background: none;
+  color: black;
+  text-decoration: underline;
+}
+
+.home-container {
+  background: linear-gradient(
+    135deg,
+    #d5f2d5,
+    #d5f2e9,
+    #d5f2df,
+    #e1f2d5,
+    #d5f1f2
+  );
+  color: black;
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  margin-top: 1px;
+}
+
+.accommodation {
+  text-align: left;
+  background-color: white;
+  border-radius: 20px;
+  padding: 25px;
+  margin-top: 20%;
+  text-align: center;
+  font-family: "Lato", sans-serif;
+  object-fit: fill;
+  box-shadow: 10px 10px 40px #cfcfcf, -10px -10px 40px #ffffff;
+}
+.accommodation-box {
+  display: grid;
+  margin: 2rem;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2rem;
+}
+
+.image {
+  width: 100%;
+  object-fit: fill;
+  border-radius: 10px;
+}
+.icons {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.info {
+  width: 20px;
+  cursor: pointer;
+}
+
+.user-container {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: white;
+  height: 60px;
+  width: 95%;
+  padding: 0 20px;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  font-family: "Lato", sans-serif;
+}
+
+.user-box {
+  justify-content: center;
+  display: flex;
+}
+
+.user,
+.logout,
+.help,
+.home,
+.back {
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.user img,
+.logout img,
+.help img,
+.home img,
+.back img {
+  width: 2rem;
+  height: 2rem;
+}
+
+.user-name,
+.points {
+  margin-right: 10px;
+}
+
+.help {
+  margin-left: auto;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.icons img {
+  margin-left: 10px;
+  cursor: pointer;
+}
+.info-container {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 95%;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: justify;
+}
+
+.next {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+}
+
+.next button {
+  background: none;
+}
+
+.next button img {
+  width: 50px;
+  height: 50px;
+}
+.room-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 2%;
+  margin-top: 2%;
+}
+
+.room-box {
+  background-color: white;
+  padding: 2%;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  font-family: "Lato", sans-serif;
+  margin-right: auto;
+  margin-bottom: 2%;
+  display: flex;
+  align-items: center;
+  width: 94%;
+}
+
+.room-box p {
+  margin-right: 10%;
+}
+
+.select {
+  cursor: pointer;
+  width: 5%; /* Zmenšiť šírku na 5% veľkosti kontajnera */
+  height: 30px;
+}
+.room-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 20px;
+  margin-top: 50px;
+}
+
+.room-box {
+  background-color: white;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  font-family: "Lato", sans-serif;
+  margin-right: auto;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.room-box p {
+  margin-right: 30px;
+}
+
+.select {
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+}
+
+.filters {
+  margin-top: 50px;
+  width: 300px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.filters label,
+.filters select,
+.filters input {
+  margin-bottom: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+.buttons button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.buttons button:hover {
+  background-color: #0056b3;
+}
+
+.selected {
+  border: 2px solid green;
+}
+
+.help-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  width: 50%;
+}
+
+.question-box {
+  width: 100%;
+}
+
+label {
+  display: block;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1.5px solid #0d0b0b;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.status-container {
+  background-color: #ffffff;
+  padding: 20px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  margin-bottom: 20px;
+  margin-top: 100px;
+  width: 1000px;
+}
+.status-container h2 {
+  color: #333333;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.status-container .request {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid #dddddd;
+}
+
+.status-container .request p {
+  margin: 0;
+  margin-right: 10px;
+}
