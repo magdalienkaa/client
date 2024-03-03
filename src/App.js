@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
 import { Login } from "./Login";
 import Home from "./Home";
@@ -16,9 +16,6 @@ function App() {
 
   const isLoggedIn = selector.userStore.loggedIn;
 
-  const navigate = useNavigate();
-  const [error, setError] = useState("");
-  console.log(isLoggedIn);
   return (
     <div className="App">
       <Routes>
@@ -34,11 +31,26 @@ function App() {
           path="/user"
           element={isLoggedIn ? <User /> : <Navigate to="/login" />}
         />
-        <Route path="/accommodation" element={<Accommodation />} />
-        <Route path="/info/:id" element={<Info />} />
-        <Route path="/info/:id/select" element={<Select />} />
-        <Route path="/home/help" element={<Help />} />
-        <Route path="/home/status" element={<Status />} />
+        <Route
+          path="/accommodation"
+          element={isLoggedIn ? <Accommodation /> : <Navigate to="/login" />}
+        />
+        <Route
+          path="/info/:id"
+          element={isLoggedIn ? <Info /> : <Navigate to="/login" />}
+        />
+        <Route
+          path="/info/:id/select"
+          element={isLoggedIn ? <Select /> : <Navigate to="/login" />}
+        />
+        <Route
+          path="/home/help"
+          element={isLoggedIn ? <Help /> : <Navigate to="/login" />}
+        />
+        <Route
+          path="/home/status"
+          element={isLoggedIn ? <Status /> : <Navigate to="/login" />}
+        />
       </Routes>
     </div>
   );

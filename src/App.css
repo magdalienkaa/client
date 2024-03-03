@@ -179,7 +179,8 @@ button {
   background-color: #ffffff;
   border-radius: 10px;
   padding: 20px;
-  margin-top: 10px;
+  margin-top: 100px;
+  margin-bottom: 20px;
   margin-left: auto;
   margin-right: auto;
   width: 95%;
@@ -188,11 +189,12 @@ button {
 }
 
 .next {
-  position: absolute;
-  bottom: 10%;
-  left: 50%;
+  margin-bottom: 10px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-
 .next button {
   background: none;
 }
@@ -371,4 +373,9 @@ textarea {
 .status-container .request p {
   margin: 0;
   margin-right: 10px;
+}
+
+.photos-container img {
+  width: 300px; /* Napríklad pevná šírka 200px */
+  height: auto; /* Zachová pomer strán, aby sa obrázok nezdeformoval */
 }
