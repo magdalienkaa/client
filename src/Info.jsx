@@ -51,6 +51,9 @@ const Info = () => {
     fetchPhotos();
   }, [id]);
 
+  // Získanie unikátnych typov fotiek
+  const photoTypes = [...new Set(photos.map((photo) => photo.typ))];
+
   return (
     <div>
       <div className="user-containter">
@@ -61,15 +64,22 @@ const Info = () => {
         <p>{description}</p>
         <div>
           <h3>Fotky</h3>
-          <div className="photos-container">
-            {photos.map((photo, index) => (
-              <img
-                key={index}
-                src={`data:image/jpeg;base64,${photo.fotka}`}
-                alt={`Photo ${index + 1}`}
-              />
-            ))}
-          </div>
+          {photoTypes.map((photoType) => (
+            <div key={photoType}>
+              <h4>{photoType}</h4>
+              <div className="photos-container">
+                {photos
+                  .filter((photo) => photo.typ === photoType)
+                  .map((photo, index) => (
+                    <img
+                      key={index}
+                      src={`data:image/jpeg;base64,${photo.fotka}`}
+                      alt={`Photo ${index + 1}`}
+                    />
+                  ))}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
       <div className="next">
