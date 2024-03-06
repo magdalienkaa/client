@@ -94,13 +94,13 @@ const Room = ({ filters }) => {
               }`}
               onClick={() => handleSelectRoom(room.id_izba)}
             >
-              <p>{room.cislo_izby}</p>
-              <p>{room.orientacia}</p>
-              <p>{room.typ_izby}</p>
-              <p>{room.stav_rekonstrukcie}</p>
-              <p>{room.poschodie} .poschodie</p>
-              <p>BLOK {room.blok}</p>
-              <p>{room.cena} €</p>
+              <p style={{ flex: 1 }}>{room.cislo_izby}</p>
+              <p style={{ flex: 1 }}>{room.orientacia}</p>
+              <p style={{ flex: 2 }}>{room.typ_izby}</p>
+              <p style={{ flex: 2 }}>{room.stav_rekonstrukcie}</p>
+              <p style={{ flex: 3 }}>{room.poschodie} .poschodie</p>
+              <p style={{ flex: 2 }}>BLOK {room.blok}</p>
+              <p style={{ flex: 2 }}>{room.cena} €</p>
               <img
                 src="/images/next.svg"
                 alt="Next"

@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import Room from "./Room";
 import User from "./User";
 
 const Select = () => {
   const [filters, setFilters] = useState({
+    dormitory: "",
     orientation: "",
     block: "",
     floor: "",
@@ -12,6 +13,21 @@ const Select = () => {
     reconstructionStatus: "",
     locationOnCorridor: "",
   });
+  const [dormitories, setDormitories] = useState([]);
+
+  useEffect(() => {
+    const fetchDormitories = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/api/home");
+        const data = await response.json();
+        setDormitories(data);
+      } catch (error) {
+        console.error("Error fetching dormitories:", error);
+      }
+    };
+
+    fetchDormitories();
+  }, []);
 
   const handleFilterChange = (e) => {
     const { name, value } = e.target;
@@ -21,14 +37,9 @@ const Select = () => {
     });
   };
 
-  const handleApplyFilters = () => {
-    // Logic to apply filters, for example, trigger a refetch of room data with the new filters
-    console.log("Filters applied:", filters);
-  };
-
   const handleResetFilters = () => {
-    // Logic to reset filters to default values
     setFilters({
+      dormitory: "",
       orientation: "",
       block: "",
       floor: "",
@@ -43,6 +54,22 @@ const Select = () => {
       <User />
       <div className="room-container">
         <div className="filters">
+          <label>
+            Internát:
+            <select
+              name="dormitory"
+              value={filters.dormitory}
+              onChange={handleFilterChange}
+            >
+              <option value="">-- Vyberte internát --</option>
+              {dormitories.map((dormitory) => (
+                <option key={dormitory.id_internat} value={dormitory.nazov}>
+                  {dormitory.nazov}
+                </option>
+              ))}
+            </select>
+          </label>
+
           <label>
             Orientácia:
             <select

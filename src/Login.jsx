@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { login, addUserData } from "./reducers/UserReducer.js";
+import "./App.css";
 
 export const Login = (props) => {
   const [email, setEmail] = useState("");

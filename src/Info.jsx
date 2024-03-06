@@ -75,6 +75,7 @@ const Info = () => {
                       key={index}
                       src={`data:image/jpeg;base64,${photo.fotka}`}
                       alt={`Photo ${index + 1}`}
+                      className="photo"
                     />
                   ))}
               </div>

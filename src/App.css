@@ -12,12 +12,12 @@
     #d5f1f2
   );
   color: black;
+  font-family: "Poppins", sans-serif;
 }
 
 body {
   margin: 0;
   padding: 0;
-  font-family: "Lato", sans-serif;
 }
 
 .auth-form-container,
@@ -93,7 +93,6 @@ button {
   padding: 25px;
   margin-top: 20%;
   text-align: center;
-  font-family: "Lato", sans-serif;
   object-fit: fill;
   box-shadow: 10px 10px 40px #cfcfcf, -10px -10px 40px #ffffff;
 }
@@ -134,7 +133,6 @@ button {
   padding: 0 20px;
   border-radius: 20px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  font-family: "Lato", sans-serif;
 }
 
 .user-box {
@@ -217,16 +215,11 @@ button {
   padding: 2%;
   border-radius: 20px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  font-family: "Lato", sans-serif;
   margin-right: auto;
   margin-bottom: 2%;
   display: flex;
   align-items: center;
-  width: 94%;
-}
-
-.room-box p {
-  margin-right: 10%;
+  font-size: 14px;
 }
 
 .select {
@@ -248,7 +241,6 @@ button {
   padding: 20px;
   border-radius: 20px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  font-family: "Lato", sans-serif;
   margin-right: auto;
   margin-bottom: 20px;
   display: flex;
@@ -376,6 +368,7 @@ textarea {
 }
 
 .photos-container img {
-  width: 300px; /* Napríklad pevná šírka 200px */
-  height: auto; /* Zachová pomer strán, aby sa obrázok nezdeformoval */
+  width: 300px;
+  height: 300px;
+  overflow: hidden;
 }
