@@ -19,9 +19,7 @@ const Help = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission here (e.g., send data to backend)
     console.log("Form submitted:", formData);
-    // Clear form after submission
     setFormData({
       email: "",
       questionName: "",
@@ -33,7 +31,7 @@ const Help = () => {
     <div className="help-container">
       <User />
       <div className="question-box">
-        <h2>Ask a Question</h2>
+        <h2>Opýtaj sa otázku</h2>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="email">Email:</label>
@@ -47,7 +45,7 @@ const Help = () => {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="questionName">Name:</label>
+            <label htmlFor="questionName">Meno:</label>
             <input
               type="text"
               id="questionName"
@@ -58,7 +56,7 @@ const Help = () => {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="questionDescription">Question Description:</label>
+            <label htmlFor="questionDescription">Otázka:</label>
             <textarea
               id="questionDescription"
               name="questionDescription"
@@ -69,7 +67,7 @@ const Help = () => {
           </div>
           <div className="button-container">
             {" "}
-            <button type="submit">Submit</button>
+            <button type="submit">Odoslať</button>
           </div>
         </form>
       </div>

@@ -30,7 +30,7 @@ const Status = () => {
     <div>
       <User />
       <div className="status-container">
-        <h2>Request Status</h2>
+        <h2>Stav žiadostí</h2>
         {requests.length > 0 ? (
           requests.map((request) => (
             <div className="request" key={request.id}>
@@ -39,7 +39,7 @@ const Status = () => {
             </div>
           ))
         ) : (
-          <p>No requests available.</p>
+          <p>Neboli nájdené žiadne žiadosti.</p>
         )}
       </div>
     </div>

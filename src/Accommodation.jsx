@@ -15,9 +15,7 @@ const Accommodation = (data) => {
       />
       <div className="icons">
         <Link to={`/info/${accommodation.data.id_internat}`}>
-          <div className="info">
-            <img src="images/info.svg" alt="Info" />
-          </div>
+          <button className="select-button">Vybrať</button>
         </Link>
       </div>
     </div>

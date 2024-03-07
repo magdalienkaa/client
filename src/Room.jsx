@@ -13,7 +13,7 @@ const Room = ({ filters }) => {
     try {
       const response = await fetch(`/api/user-request/${userId}/${roomId}`);
       const data = await response.json();
-      setRequestStatus(data); // Set the request status in state
+      setRequestStatus(data);
     } catch (error) {
       console.error("Error fetching user request:", error);
     }
@@ -40,7 +40,7 @@ const Room = ({ filters }) => {
   const handleSelectRoom = async (id_izba) => {
     try {
       if (userSelect.id_izba) {
-        showAlert("You have already selected a room.");
+        showAlert("Už si si zvolil/a izbu.");
         return;
       }
 
@@ -60,9 +60,8 @@ const Room = ({ filters }) => {
         return;
       }
 
-      console.log("Room selected successfully");
       setSelectedRoom(id_izba);
-      showAlert("Room selected successfully.");
+      showAlert("Izba bola úspešne zvolená.");
       fetchUserRequest(userSelect.id_student, id_izba);
     } catch (error) {
       console.error("Error selecting room:", error);
@@ -110,7 +109,7 @@ const Room = ({ filters }) => {
             </div>
           ))
         ) : (
-          <p>No rooms match the selected criteria.</p>
+          <p>Kritériam nevyhovujú žiadne izby.</p>
         )}
       </div>
     </div>

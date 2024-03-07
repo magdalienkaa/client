@@ -15,12 +15,12 @@ export const Login = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!email.trim() || !password.trim()) {
-      setError("Please enter both email and password.");
+      setError("Zadajte email a heslo.");
       return;
     }
 
     if (password.length < 8) {
-      setError("Password must be at least 8 characters long.");
+      setError("Heslo musí mať aspoň 8 znakov.");
       return;
     }
 
@@ -51,11 +51,11 @@ export const Login = (props) => {
         dispatch(addUserData(data.user));
         navigate("/home");
       } else {
-        setError(data.message || "An error occurred during login.");
+        setError(data.message || "Vyskytla sa chyba.");
       }
     } catch (error) {
       console.error("Error occurred during login:", error);
-      setError("An error occurred during login. Please try again later.");
+      setError("Vyskystla sa chyba. Vyskúšajte to neskôr.");
     } finally {
       setLoading(false);
     }
@@ -64,7 +64,7 @@ export const Login = (props) => {
   return (
     <div className="auth-form-container">
       <h2>Login</h2>
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      {error && <p style={{ color: "purple" }}>{error}</p>}
       <form className="login-form" onSubmit={handleSubmit}>
         <label htmlFor="email">Email</label>
         <input

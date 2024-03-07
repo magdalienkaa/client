@@ -51,7 +51,6 @@ const Info = () => {
     fetchPhotos();
   }, [id]);
 
-  // Získanie unikátnych typov fotiek
   const photoTypes = [...new Set(photos.map((photo) => photo.typ))];
 
   return (
@@ -82,11 +81,11 @@ const Info = () => {
             </div>
           ))}
         </div>
-      </div>
-      <div className="next">
-        <button onClick={handleNextButtonClick}>
-          <img src="/images/next.svg" alt="Next" />
-        </button>
+        <div className="next">
+          <button className="select-button" onClick={handleNextButtonClick}>
+            Ďalej
+          </button>
+        </div>
       </div>
     </div>
   );

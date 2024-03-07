@@ -4,13 +4,11 @@
   justify-content: center;
   align-items: center;
   background: linear-gradient(
-    135deg,
-    #d5f2d5,
-    #d5f2e9,
-    #d5f2df,
-    #e1f2d5,
-    #d5f1f2
+    90.4deg,
+    rgb(248, 52, 246) 0.6%,
+    rgb(152, 38, 252) 90%
   );
+
   color: black;
   font-family: "Poppins", sans-serif;
 }
@@ -34,7 +32,8 @@ body {
   margin: 0.5rem;
   background: white;
   width: 300px;
-  box-shadow: 13px 13px 79px #9c9c9c, -13px -13px 79px #ffffff;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1),
+    -3px -3px 10px rgba(255, 255, 255, 0.7);
 }
 
 label {
@@ -52,13 +51,11 @@ input {
 button {
   border: none;
   background: linear-gradient(
-    135deg,
-    #d5f2d5,
-    #d5f2e9,
-    #d5f2df,
-    #e1f2d5,
-    #d5f1f2
+    90.4deg,
+    rgb(248, 52, 246) 0.6%,
+    rgb(152, 38, 252) 90%
   );
+
   padding: 15px;
   border-radius: 10px;
   cursor: pointer;
@@ -72,12 +69,9 @@ button {
 
 .home-container {
   background: linear-gradient(
-    135deg,
-    #d5f2d5,
-    #d5f2e9,
-    #d5f2df,
-    #e1f2d5,
-    #d5f1f2
+    90.4deg,
+    rgb(248, 52, 246) 0.6%,
+    rgb(152, 38, 252) 90%
   );
   color: black;
   display: flex;
@@ -94,7 +88,8 @@ button {
   margin-top: 20%;
   text-align: center;
   object-fit: fill;
-  box-shadow: 10px 10px 40px #cfcfcf, -10px -10px 40px #ffffff;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1),
+    -3px -3px 10px rgba(255, 255, 255, 0.7);
 }
 .accommodation-box {
   display: grid;
@@ -132,7 +127,8 @@ button {
   width: 95%;
   padding: 0 20px;
   border-radius: 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1),
+    -3px -3px 10px rgba(255, 255, 255, 0.7);
 }
 
 .user-box {
@@ -193,9 +189,6 @@ button {
   flex-direction: column;
   align-items: center;
 }
-.next button {
-  background: none;
-}
 
 .next button img {
   width: 50px;
@@ -224,7 +217,7 @@ button {
 
 .select {
   cursor: pointer;
-  width: 5%; /* Zmenšiť šírku na 5% veľkosti kontajnera */
+  width: 5%;
   height: 30px;
 }
 .room-container {
@@ -371,4 +364,20 @@ textarea {
   width: 300px;
   height: 300px;
   overflow: hidden;
+}
+
+.select-button {
+  background: linear-gradient(
+    90.4deg,
+    rgb(248, 52, 246) 0.6%,
+    rgb(152, 38, 252) 90%
+  );
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  cursor: pointer;
+  padding: 8px 16px;
+  font-size: 18px;
+  font-family: "Poppins", sans-serif;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1),
+    -3px -3px 10px rgba(255, 255, 255, 0.7);
 }

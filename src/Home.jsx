@@ -13,7 +13,7 @@ const Home = () => {
       console.log(response);
       console.log(data);
     } catch (error) {
-      console.error("Chyba pri načítavaní informácií o internátoch:", error);
+      console.error("Chyba pri načítavaní informácií o internátoch.", error);
     }
   }
 
