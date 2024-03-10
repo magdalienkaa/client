@@ -34,7 +34,7 @@ export const Login = (props) => {
       };
 
       const response = await fetch(
-        "https://client-production-8f11.up.railway.app/api/login",
+        "https://server-production-5a4b.up.railway.app/api/login",
         {
           method: "POST",
           headers: {

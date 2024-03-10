@@ -8,7 +8,7 @@ const Home = () => {
   async function internat() {
     try {
       const response = await fetch(
-        "https://client-production-8f11.up.railway.app/api/home"
+        "https://server-production-5a4b.up.railway.app/api/home"
       );
       const data = await response.json();
       setAccommodations(data);

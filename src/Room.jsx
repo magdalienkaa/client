@@ -47,7 +47,7 @@ const Room = ({ filters }) => {
       }
 
       const response = await fetch(
-        `https://client-production-8f11.up.railway.app/api/select/${id_izba}`,
+        `https://server-production-5a4b.up.railway.app/api/select/${id_izba}`,
         {
           method: "POST",
           headers: {

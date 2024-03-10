@@ -43,7 +43,7 @@ const Info = () => {
     const fetchPhotos = async () => {
       try {
         const response = await fetch(
-          `https://client-production-8f11.up.railway.app/api/fotky/${id}`
+          `https://server-production-5a4b.up.railway.app/api/fotky/${id}`
         );
         const data = await response.json();
         setPhotos(data);
