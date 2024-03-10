@@ -23,7 +23,7 @@ const Room = ({ filters }) => {
     const fetchRoomData = async () => {
       try {
         const response = await fetch(
-          "https://client-production-8f11.up.railway.app/api/izba"
+          "https://server-production-5a4b.up.railway.app/api/izba"
         );
         const data = await response.json();
         setRoomData(data);

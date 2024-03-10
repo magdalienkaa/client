@@ -27,7 +27,7 @@ const Info = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `https://client-production-8f11.up.railway.app/api/info/${id}`
+          `https://server-production-5a4b.up.railway.app/api/info/${id}`
         );
         const data = await response.json();
         setDescription(data.popis);
