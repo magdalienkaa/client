@@ -1,23 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { logout } from "./reducers/UserReducer";
 import "./App.css";
 import User from "./User";
+import L from "leaflet";
+import "leaflet/dist/leaflet.css";
 
 const Info = () => {
   const { id } = useParams();
   const [description, setDescription] = useState("");
   const [photos, setPhotos] = useState([]);
+  const [latitude, setLatitude] = useState(0);
+  const [longitude, setLongitude] = useState(0);
   const navigate = useNavigate();
-
-  const loggedInUserData = useSelector((state) => state.userStore.userData);
-
-  const dispatch = useDispatch();
-  const handleLogout = () => {
-    dispatch(logout());
-    navigate("/login");
-  };
 
   const handleNextButtonClick = () => {
     navigate(`/info/${id}/select`);
@@ -31,6 +25,10 @@ const Info = () => {
         );
         const data = await response.json();
         setDescription(data.popis);
+
+        const [lat, lon] = data.suradnice.split(", ");
+        setLatitude(lat);
+        setLongitude(lon);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -56,6 +54,16 @@ const Info = () => {
   }, [id]);
 
   const photoTypes = [...new Set(photos.map((photo) => photo.typ))];
+
+  useEffect(() => {
+    const map = L.map("map").setView([latitude, longitude], 13);
+
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution: "&copy; OpenStreetMap contributors",
+    }).addTo(map);
+
+    L.marker([latitude, longitude]).addTo(map);
+  }, [latitude, longitude]);
 
   return (
     <div>
@@ -85,6 +93,7 @@ const Info = () => {
             </div>
           ))}
         </div>
+        <div id="map" style={{ height: "400px" }}></div>
         <div className="next">
           <button className="select-button" onClick={handleNextButtonClick}>
             Ďalej
