@@ -25,10 +25,7 @@ const User = ({}) => {
   };
 
   const handleBackClick = () => {
-    const previousPath = window.location.href;
-    if (previousPath !== `${window.location.origin}/login`) {
-      window.history.back();
-    }
+    window.history.back();
   };
 
   return (

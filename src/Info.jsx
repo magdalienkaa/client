@@ -26,7 +26,9 @@ const Info = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/api/info/${id}`);
+        const response = await fetch(
+          `https://client-production-8f11.up.railway.app/api/info/${id}`
+        );
         const data = await response.json();
         setDescription(data.popis);
       } catch (error) {
@@ -40,7 +42,9 @@ const Info = () => {
   useEffect(() => {
     const fetchPhotos = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/api/fotky/${id}`);
+        const response = await fetch(
+          `https://client-production-8f11.up.railway.app/api/fotky/${id}`
+        );
         const data = await response.json();
         setPhotos(data);
       } catch (error) {

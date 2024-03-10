@@ -59,6 +59,7 @@ button {
   padding: 15px;
   border-radius: 10px;
   cursor: pointer;
+  font-family: "Poppins", sans-serif;
 }
 
 .link-btn {

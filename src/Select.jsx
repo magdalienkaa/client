@@ -18,7 +18,9 @@ const Select = () => {
   useEffect(() => {
     const fetchDormitories = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/home");
+        const response = await fetch(
+          "https://client-production-8f11.up.railway.app/api/home"
+        );
         const data = await response.json();
         setDormitories(data);
       } catch (error) {

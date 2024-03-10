@@ -7,7 +7,9 @@ const Home = () => {
 
   async function internat() {
     try {
-      const response = await fetch("http://localhost:5000/api/home");
+      const response = await fetch(
+        "https://client-production-8f11.up.railway.app/api/home"
+      );
       const data = await response.json();
       setAccommodations(data);
       console.log(response);

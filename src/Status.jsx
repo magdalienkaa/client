@@ -12,7 +12,7 @@ const Status = () => {
       try {
         if (userSelect && userSelect.id_student) {
           const response = await fetch(
-            `http://localhost:5000/api/requests/${userSelect.id_student}`
+            `https://client-production-8f11.up.railway.app/api/requests/${userSelect.id_student}`
           );
 
           const data = await response.json();
