@@ -50,12 +50,8 @@ input {
 
 button {
   border: none;
-  background: linear-gradient(
-    90.4deg,
-    rgb(248, 52, 246) 0.6%,
-    rgb(152, 38, 252) 90%
-  );
-
+  background: rgb(152, 38, 252);
+  color: white;
   padding: 15px;
   border-radius: 10px;
   cursor: pointer;

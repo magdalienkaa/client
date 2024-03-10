@@ -38,6 +38,19 @@ const Info = () => {
   }, [id, navigate]);
 
   useEffect(() => {
+    const map = L.map("map", {
+      center: [latitude, longitude],
+      zoom: 16,
+    });
+
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution: "&copy; OpenStreetMap contributors",
+    }).addTo(map);
+
+    L.marker([latitude, longitude]).addTo(map);
+  }, []);
+
+  useEffect(() => {
     const fetchPhotos = async () => {
       try {
         const response = await fetch(
@@ -54,16 +67,6 @@ const Info = () => {
   }, [id]);
 
   const photoTypes = [...new Set(photos.map((photo) => photo.typ))];
-
-  useEffect(() => {
-    const map = L.map("map").setView([latitude, longitude], 13);
-
-    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      attribution: "&copy; OpenStreetMap contributors",
-    }).addTo(map);
-
-    L.marker([latitude, longitude]).addTo(map);
-  }, [latitude, longitude]);
 
   return (
     <div>
@@ -93,7 +96,7 @@ const Info = () => {
             </div>
           ))}
         </div>
-        <div id="map" style={{ height: "400px" }}></div>
+        <div className="map" id="map" style={{ height: "400px" }}></div>
         <div className="next">
           <button className="select-button" onClick={handleNextButtonClick}>
             Ďalej
