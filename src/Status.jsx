@@ -26,6 +26,25 @@ const Status = () => {
     fetchUserRequests();
   }, [userSelect]);
 
+  const cancelRequest = async (id) => {
+    try {
+      const response = await fetch(
+        `https://server-production-5a4b.up.railway.app/api/request/${id}`,
+        {
+          method: "DELETE",
+        }
+      );
+
+      if (response.ok) {
+        setRequests(requests.filter((request) => request.id !== id));
+      } else {
+        console.error("Error cancelling request:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error.", error);
+    }
+  };
+
   return (
     <div>
       <User />
@@ -36,6 +55,9 @@ const Status = () => {
             <div className="request" key={request.id}>
               <p>Číslo izby: {request.cislo_izby}</p>
               <p>Status: {request.stav}</p>
+              <button onClick={() => cancelRequest(request.id)}>
+                Zrušiť žiadosť
+              </button>
             </div>
           ))
         ) : (

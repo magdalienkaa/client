@@ -9,64 +9,63 @@ const Info = () => {
   const { id } = useParams();
   const [description, setDescription] = useState("");
   const [photos, setPhotos] = useState([]);
-  const [latitude, setLatitude] = useState(0);
-  const [longitude, setLongitude] = useState(0);
+  const [latitude, setLatitude] = useState();
+  const [longitude, setLongitude] = useState();
   const navigate = useNavigate();
 
   const handleNextButtonClick = () => {
     navigate(`/info/${id}/select`);
   };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(
-          `https://server-production-5a4b.up.railway.app/api/info/${id}`
-        );
-        const data = await response.json();
-        setDescription(data.popis);
+  async function fetchData() {
+    try {
+      const response = await fetch(
+        `https://server-production-5a4b.up.railway.app/api/info/${id}`
+      );
+      const data = await response.json();
+      setDescription(data.popis);
+      console.log(data);
+      setLatitude(data.suradnice2);
+      setLongitude(data.suradnice);
+      console.log("Data fetch");
+      console.log(latitude, longitude);
+      mapa(data.suradnice, data.suradnice2);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  }
 
-        const [lat, lon] = data.suradnice.split(", ");
-        setLatitude(lat);
-        setLongitude(lon);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
-    fetchData();
-  }, [id, navigate]);
-
-  useEffect(() => {
-    const map = L.map("map", {
-      center: [latitude, longitude],
-      zoom: 16,
-    });
+  async function mapa(latitude, longitude) {
+    console.log("Data fetch MAPA");
+    console.log(latitude, longitude);
+    const map = L.map("map").setView([latitude, longitude], 16);
 
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       attribution: "&copy; OpenStreetMap contributors",
     }).addTo(map);
 
     L.marker([latitude, longitude]).addTo(map);
-  }, []);
+  }
 
-  useEffect(() => {
-    const fetchPhotos = async () => {
-      try {
-        const response = await fetch(
-          `https://server-production-5a4b.up.railway.app/api/fotky/${id}`
-        );
-        const data = await response.json();
-        setPhotos(data);
-      } catch (error) {
-        console.error("Error fetching photos:", error);
-      }
-    };
-
-    fetchPhotos();
-  }, [id]);
+  async function fetchPhotos() {
+    try {
+      const response = await fetch(
+        `https://server-production-5a4b.up.railway.app/api/fotky/${id}`
+      );
+      const data = await response.json();
+      setPhotos(data);
+    } catch (error) {
+      console.error("Error fetching photos:", error);
+    }
+  }
 
   const photoTypes = [...new Set(photos.map((photo) => photo.typ))];
+
+  useEffect(() => {
+    fetchData();
+    fetchPhotos();
+    // mapa();
+  }, [id]);
 
   return (
     <div>
@@ -96,7 +95,11 @@ const Info = () => {
             </div>
           ))}
         </div>
-        <div className="map" id="map" style={{ height: "400px" }}></div>
+        <div
+          className="map"
+          id="map"
+          style={{ height: "200px", width: "900px" }}
+        ></div>
         <div className="next">
           <button className="select-button" onClick={handleNextButtonClick}>
             Ďalej
