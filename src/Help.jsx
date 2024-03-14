@@ -5,9 +5,17 @@ import "./App.css";
 const Help = () => {
   const [formData, setFormData] = useState({
     email: "",
-    questionName: "",
-    questionDescription: "",
+    description: "",
   });
+
+  const [validEmails] = useState([
+    "spfmv@euba.sk",
+    "spof@euba.sk",
+    "spfhi@euba.sk",
+    "spnhf@euba.sk",
+    "spfaj@euba.sk",
+    "spfpm@euba.sk",
+  ]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -19,12 +27,15 @@ const Help = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    setFormData({
-      email: "",
-      questionName: "",
-      questionDescription: "",
-    });
+    if (validEmails.includes(formData.email)) {
+      console.log("Form submitted:", formData);
+      setFormData({
+        email: "",
+        description: "",
+      });
+    } else {
+      alert("Zadajte prosím platný email.");
+    }
   };
 
   return (
@@ -35,38 +46,34 @@ const Help = () => {
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="email">Email:</label>
-            <input
-              type="email"
+            <select
               id="email"
               name="email"
               value={formData.email}
               onChange={handleChange}
               required
-            />
+            >
+              <option value="" disabled hidden>
+                Vyberte email
+              </option>
+              {validEmails.map((email) => (
+                <option key={email} value={email}>
+                  {email}
+                </option>
+              ))}
+            </select>
           </div>
           <div className="form-group">
-            <label htmlFor="questionName">Meno:</label>
-            <input
-              type="text"
-              id="questionName"
-              name="questionName"
-              value={formData.questionName}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="questionDescription">Otázka:</label>
+            <label htmlFor="description">Otázka:</label>
             <textarea
-              id="questionDescription"
-              name="questionDescription"
-              value={formData.questionDescription}
+              id="description"
+              name="description"
+              value={formData.description}
               onChange={handleChange}
               required
             ></textarea>
           </div>
           <div className="button-container">
-            {" "}
             <button type="submit">Odoslať</button>
           </div>
         </form>

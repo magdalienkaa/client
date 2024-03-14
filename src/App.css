@@ -312,21 +312,22 @@ button {
 
 label {
   display: block;
+  margin-bottom: 5px;
 }
 
-input,
+select,
 textarea {
-  width: 100%;
+  width: calc(100% - 20px); /* Upravenie šírky o 20px kvôli paddingu */
   padding: 10px;
   border: 1.5px solid #0d0b0b;
   border-radius: 10px;
   box-sizing: border-box;
+  margin-bottom: 15px; /* Medzera medzi jednotlivými poliami */
 }
 
 .button-container {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
 }
 
 .status-container {
