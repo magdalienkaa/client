@@ -43,14 +43,22 @@ const User = () => {
       </div>
       <div className="user-name">
         <h3>
-          {loggedInUserData
+          {loggedInUserData &&
+          loggedInUserData.meno &&
+          loggedInUserData.priezvisko &&
+          loggedInUserData.meno !== "null" &&
+          loggedInUserData.priezvisko !== "null"
             ? `${loggedInUserData.meno} ${loggedInUserData.priezvisko}`
-            : "Loading..."}
+            : "Admin"}
         </h3>
       </div>
       <div className="points">
         <h3>
-          {loggedInUserData ? `${loggedInUserData.body} bodov` : "Loading..."}
+          {loggedInUserData &&
+          loggedInUserData.body &&
+          loggedInUserData.body !== "null"
+            ? `${loggedInUserData.body} bodov`
+            : null}
         </h3>
       </div>
       <div className="help" onClick={handleUserHelpClick}>

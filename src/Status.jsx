@@ -10,23 +10,42 @@ const Status = () => {
   useEffect(() => {
     const fetchUserRequests = async () => {
       try {
-        if (userSelect && userSelect.id_student) {
-          const response = await fetch(
-            `https://server-production-5a4b.up.railway.app/api/requests/${userSelect.id_student}`
-          );
+        const response = await fetch(
+          `https://server-production-5a4b.up.railway.app/api/requests/${userSelect.id_student}`
+        );
 
-          const data = await response.json();
-          setRequests(data);
-        }
+        const data = await response.json();
+        setRequests(data);
       } catch (error) {
         console.error("Error fetching user requests:", error);
       }
     };
 
-    fetchUserRequests();
+    if (userSelect && userSelect.id_student) {
+      fetchUserRequests();
+    }
   }, [userSelect]);
 
   const cancelRequest = async (id) => {
+    try {
+      const response = await fetch(
+        `https://server-production-5a4b.up.railway.app/api/request/${id}`,
+        {
+          method: "DELETE",
+        }
+      );
+
+      if (response.ok) {
+        setRequests(requests.filter((request) => request.id !== id));
+      } else {
+        console.error("Error cancelling request:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error.", error);
+    }
+  };
+
+  const approveRequest = async (id) => {
     try {
       const response = await fetch(
         `https://server-production-5a4b.up.railway.app/api/request/${id}`,
@@ -55,9 +74,20 @@ const Status = () => {
             <div className="request" key={request.id}>
               <p>Číslo izby: {request.cislo_izby}</p>
               <p>Status: {request.stav}</p>
-              <button onClick={() => cancelRequest(request.id)}>
-                Zrušiť žiadosť
-              </button>
+              {userSelect.role === "admin" ? (
+                <div>
+                  <button onClick={() => approveRequest(request.id)}>
+                    Potvrdiť žiadosť
+                  </button>
+                  <button onClick={() => cancelRequest(request.id)}>
+                    Zamietnuť žiadosť
+                  </button>
+                </div>
+              ) : (
+                <button onClick={() => cancelRequest(request.id)}>
+                  Zrušiť žiadosť
+                </button>
+              )}
             </div>
           ))
         ) : (
