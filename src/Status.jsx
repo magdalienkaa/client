@@ -63,7 +63,6 @@ const Status = () => {
       console.error("Error.", error);
     }
   };
-  console.log("userData:", userSelect);
 
   return (
     <div>
