@@ -63,6 +63,7 @@ const Status = () => {
       console.error("Error.", error);
     }
   };
+  console.log("userData:", userSelect);
 
   return (
     <div>
@@ -73,8 +74,11 @@ const Status = () => {
           requests.map((request) => (
             <div className="request" key={request.id}>
               <p>Číslo izby: {request.cislo_izby}</p>
+              {userSelect && userSelect.role === "admin" && (
+                <p>ID študenta: {request.id_student}</p>
+              )}
               <p>Status: {request.stav}</p>
-              {userSelect.role === "admin" ? (
+              {userSelect && userSelect.role === "admin" ? (
                 <div>
                   <button onClick={() => approveRequest(request.id)}>
                     Potvrdiť žiadosť
