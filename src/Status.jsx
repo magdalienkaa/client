@@ -48,16 +48,20 @@ const Status = () => {
   const approveRequest = async (id) => {
     try {
       const response = await fetch(
-        `https://server-production-5a4b.up.railway.app/api/request/${id}`,
+        `https://server-production-5a4b.up.railway.app/api/approve/${id}`,
         {
-          method: "DELETE",
+          method: "PUT", // Zmena metódy na PUT
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ id_student: userSelect.id_student }), // Poslanie id_studenta v tele požiadavky
         }
       );
 
       if (response.ok) {
         setRequests(requests.filter((request) => request.id !== id));
       } else {
-        console.error("Error cancelling request:", response.statusText);
+        console.error("Error approving request:", response.statusText);
       }
     } catch (error) {
       console.error("Error.", error);
