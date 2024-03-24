@@ -47,7 +47,6 @@ export const Login = (props) => {
       console.log("Response status:", response);
 
       const data = await response.json();
-      console.log("Data from server:", data);
 
       if (response.ok) {
         dispatch(login());
@@ -57,7 +56,7 @@ export const Login = (props) => {
         setError(data.message || "Vyskytla sa chyba.");
       }
     } catch (error) {
-      console.error("Error occurred during login:", error);
+      console.error("Vyskytla sa chyba počas prihlasovania.", error);
       setError("Vyskystla sa chyba. Vyskúšajte to neskôr.");
     } finally {
       setLoading(false);
@@ -79,7 +78,7 @@ export const Login = (props) => {
           onChange={(e) => setEmail(e.target.value)}
         />
 
-        <label htmlFor="password">Password</label>
+        <label htmlFor="password">Heslo</label>
         <input
           value={password}
           type="password"
@@ -90,7 +89,7 @@ export const Login = (props) => {
         />
 
         <button type="submit" disabled={loading}>
-          {loading ? "Logging In..." : "Log In"}
+          {loading ? "Prihlasovanie..." : "Prihlásiť sa"}
         </button>
       </form>
     </div>
