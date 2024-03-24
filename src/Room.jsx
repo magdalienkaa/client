@@ -79,7 +79,10 @@ const Room = ({ filters }) => {
       (!filters.reconstructionStatus ||
         room.stav_rekonstrukcie === filters.reconstructionStatus) &&
       (!filters.locationOnCorridor ||
-        room.umiestnenie_na_chodbe === filters.locationOnCorridor)
+        room.umiestnenie_na_chodbe === filters.locationOnCorridor) &&
+      // Táto podmienka zabezpečí, že sa izba nezobrazí, ak je už zvolená alebo je v tabuľke žiadostí
+      room.id_izba !== selectedRoom &&
+      !requestStatus
     );
   });
 
@@ -95,6 +98,7 @@ const Room = ({ filters }) => {
               }`}
               onClick={() => handleSelectRoom(room.id_izba)}
             >
+              <p style={{ flex: 2 }}>Internát: {room.nazov}</p>
               <p style={{ flex: 1 }}>{room.cislo_izby}</p>
               <p style={{ flex: 1 }}>{room.orientacia}</p>
               <p style={{ flex: 2 }}>{room.typ_izby}</p>

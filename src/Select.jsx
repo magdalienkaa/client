@@ -152,7 +152,7 @@ const Select = () => {
               <option value="Pri výťahu">Pri výťahu</option>
             </select>
           </label>
-          <div className="buttons">
+          <div>
             <button onClick={handleResetFilters}>Reset</button>
           </div>
         </div>

@@ -101,9 +101,7 @@ const Info = () => {
           style={{ height: "200px", width: "900px" }}
         ></div>
         <div className="next">
-          <button className="select-button" onClick={handleNextButtonClick}>
-            Ďalej
-          </button>
+          <button onClick={handleNextButtonClick}>Ďalej</button>
         </div>
       </div>
     </div>
