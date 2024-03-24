@@ -31,7 +31,7 @@ const Info = () => {
       console.log(latitude, longitude);
       mapa(data.suradnice, data.suradnice2);
     } catch (error) {
-      console.error("Error fetching data:", error);
+      console.error("Chyba pri načítavaní dát.", error);
     }
   }
 
@@ -55,7 +55,7 @@ const Info = () => {
       const data = await response.json();
       setPhotos(data);
     } catch (error) {
-      console.error("Error fetching photos:", error);
+      console.error("Chyba pri načítavaní fotiek.", error);
     }
   }
 

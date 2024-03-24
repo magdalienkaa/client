@@ -17,7 +17,7 @@ const Status = () => {
         const data = await response.json();
         setRequests(data);
       } catch (error) {
-        console.error("Error fetching user requests:", error);
+        console.error("Chyba pri načítavaní žiadostí.", error);
       }
     };
 
@@ -38,10 +38,10 @@ const Status = () => {
       if (response.ok) {
         setRequests(requests.filter((request) => request.id !== id));
       } else {
-        console.error("Error cancelling request:", response.statusText);
+        console.error("Chyba pri rušení žiadosti.", response.statusText);
       }
     } catch (error) {
-      console.error("Error.", error);
+      console.error("Chyba.", error);
     }
   };
 
@@ -50,21 +50,21 @@ const Status = () => {
       const response = await fetch(
         `https://server-production-5a4b.up.railway.app/api/approve/${id}`,
         {
-          method: "PUT", // Zmena metódy na PUT
+          method: "PUT",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ id_student: userSelect.id_student }), // Poslanie id_studenta v tele požiadavky
+          body: JSON.stringify({ id_student: userSelect.id_student }),
         }
       );
 
       if (response.ok) {
         setRequests(requests.filter((request) => request.id !== id));
       } else {
-        console.error("Error approving request:", response.statusText);
+        console.error("Chyba pri potrvdzovaní žiadosti.", response.statusText);
       }
     } catch (error) {
-      console.error("Error.", error);
+      console.error("Chyba.", error);
     }
   };
 

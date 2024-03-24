@@ -5,6 +5,7 @@ import User from "./User";
 
 const Select = () => {
   const [filters, setFilters] = useState({
+    roomName: "",
     dormitory: "",
     orientation: "",
     block: "",
@@ -24,7 +25,7 @@ const Select = () => {
         const data = await response.json();
         setDormitories(data);
       } catch (error) {
-        console.error("Error fetching dormitories:", error);
+        console.error("Chyba pri načítavaní údajov o internátoch.", error);
       }
     };
 
@@ -41,6 +42,7 @@ const Select = () => {
 
   const handleResetFilters = () => {
     setFilters({
+      roomName: "",
       dormitory: "",
       orientation: "",
       block: "",

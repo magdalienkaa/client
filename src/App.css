@@ -85,8 +85,7 @@ button {
   margin-top: 20%;
   text-align: center;
   object-fit: fill;
-  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1),
-    -3px -3px 10px rgba(255, 255, 255, 0.7);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 .accommodation-box {
   display: grid;
@@ -124,8 +123,7 @@ button {
   width: 95%;
   padding: 0 20px;
   border-radius: 20px;
-  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1),
-    -3px -3px 10px rgba(255, 255, 255, 0.7);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .user-box {
@@ -179,51 +177,13 @@ button {
   text-align: justify;
 }
 
-.next {
-  margin-bottom: 10px;
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.next button img {
-  width: 50px;
-  height: 50px;
-}
-.room-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  align-items: flex-start;
-  padding: 2%;
-  margin-top: 2%;
-}
-
-.room-box {
-  background-color: white;
-  padding: 2%;
-  border-radius: 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  margin-right: auto;
-  margin-bottom: 2%;
-  display: flex;
-  align-items: center;
-  font-size: 14px;
-}
-
-.select {
-  cursor: pointer;
-  width: 5%;
-  height: 30px;
-}
 .room-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
   align-items: flex-start;
   padding: 20px;
-  margin-top: 50px;
+  margin-top: 30px;
 }
 
 .room-box {
@@ -231,25 +191,19 @@ button {
   padding: 20px;
   border-radius: 20px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  margin-right: auto;
   margin-bottom: 20px;
   display: flex;
   align-items: center;
 }
 
 .room-box p {
-  margin-right: 30px;
-}
-
-.select {
-  cursor: pointer;
-  width: 30px;
-  height: 30px;
+  margin-right: 35px;
+  font-size: 11px;
 }
 
 .filters {
   margin-top: 50px;
-  width: 300px;
+  width: 200px;
   padding: 20px;
   background-color: #fff;
   border-radius: 10px;
@@ -264,8 +218,8 @@ button {
   box-sizing: border-box;
   padding: 10px;
   border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
+  border-radius: 10px;
+  font-size: 13px;
 }
 
 .buttons {
@@ -317,12 +271,12 @@ label {
 
 select,
 textarea {
-  width: calc(100% - 20px); /* Upravenie šírky o 20px kvôli paddingu */
+  width: calc(100% - 20px);
   padding: 10px;
   border: 1.5px solid #0d0b0b;
   border-radius: 10px;
   box-sizing: border-box;
-  margin-bottom: 15px; /* Medzera medzi jednotlivými poliami */
+  margin-bottom: 15px;
 }
 
 .button-container {
