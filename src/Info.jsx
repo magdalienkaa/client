@@ -98,7 +98,7 @@ const Info = () => {
         <div
           className="map"
           id="map"
-          style={{ height: "200px", width: "900px" }}
+          style={{ height: "200px", width: "400px" }}
         ></div>
         <div className="next">
           <button onClick={handleNextButtonClick}>Ďalej</button>

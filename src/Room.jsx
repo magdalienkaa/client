@@ -15,7 +15,7 @@ const Room = ({ filters }) => {
       const data = await response.json();
       setRequestStatus(data);
     } catch (error) {
-      console.error("Chyba pri načítavaní požiadavky používateľa.", error);
+      console.error("Error fetching user request:", error);
     }
   };
 
@@ -28,7 +28,7 @@ const Room = ({ filters }) => {
         const data = await response.json();
         setRoomData(data);
       } catch (error) {
-        console.error("Nastal problém pri načítaní údajov o izbách.", error);
+        console.error("Error fetching room data:", error);
       }
     };
 
@@ -41,8 +41,8 @@ const Room = ({ filters }) => {
 
   const handleSelectRoom = async (id_izba) => {
     try {
-      if (userSelect.id_izba !== null) {
-        showAlert("Už máš pridelenú izbu.");
+      if (userSelect.id_izba) {
+        showAlert("Už si si zvolil/a izbu.");
         return;
       }
 
@@ -66,14 +66,12 @@ const Room = ({ filters }) => {
       showAlert("Izba bola úspešne zvolená.");
       fetchUserRequest(userSelect.id_student, id_izba);
     } catch (error) {
-      console.error("Nastal problém pri výbere izby.", error);
+      console.error("Error selecting room:", error);
     }
   };
 
   const filteredRooms = roomData.filter((room) => {
     return (
-      (!filters.roomName ||
-        room.nazov.toLowerCase().includes(filters.roomName.toLowerCase())) &&
       (!filters.orientation || room.orientacia === filters.orientation) &&
       (!filters.block || room.blok === filters.block) &&
       (!filters.floor || room.poschodie === parseInt(filters.floor)) &&
@@ -90,8 +88,8 @@ const Room = ({ filters }) => {
   return (
     <div className="room-container">
       <div>
-        {roomData.length > 0 ? (
-          roomData.map((room) => (
+        {filteredRooms.length > 0 ? (
+          filteredRooms.map((room) => (
             <div
               key={room.id_izba}
               className={`room-box ${
@@ -103,9 +101,9 @@ const Room = ({ filters }) => {
               <p style={{ flex: 1 }}>{room.orientacia}</p>
               <p style={{ flex: 1 }}>{room.typ_izby}</p>
               <p style={{ flex: 1 }}>{room.stav_rekonstrukcie}</p>
-              <p style={{ flex: 4 }}>{room.poschodie} .poschodie</p>
+              <p style={{ flex: 4 }}>{room.poschodie}.poschodie</p>
               <p style={{ flex: 2 }}>BLOK {room.blok}</p>
-              <p style={{ flex: 3 }}>{room.cena} €</p>
+              <p style={{ flex: 2 }}>{parseInt(room.cena)}€</p>
               <button onClick={() => handleSelectRoom(room.id_izba)}>
                 Zvoliť
               </button>
