@@ -46,14 +46,6 @@ const Status = () => {
     }
   };
 
-  const approveRequest = async (id, id_student) => {
-    // approveRequest function remains unchanged
-  };
-
-  const rejectRequest = async (id) => {
-    // rejectRequest function remains unchanged
-  };
-
   const handleFilterChange = (e) => {
     setFilter(e.target.value);
   };

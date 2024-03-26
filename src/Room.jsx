@@ -28,7 +28,7 @@ const Room = ({ filters }) => {
         const data = await response.json();
         setRoomData(data);
       } catch (error) {
-        console.error("Error fetching room data:", error);
+        console.error("Chyba pri načítaní informácií o izbách:", error);
       }
     };
 
@@ -66,7 +66,7 @@ const Room = ({ filters }) => {
       showAlert("Izba bola úspešne zvolená.");
       fetchUserRequest(userSelect.id_student, id_izba);
     } catch (error) {
-      console.error("Error selecting room:", error);
+      console.error("Chyba pri výbere izby:", error);
     }
   };
 

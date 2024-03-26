@@ -44,8 +44,6 @@ export const Login = (props) => {
         }
       );
 
-      console.log("Response status:", response);
-
       const data = await response.json();
 
       if (response.ok) {

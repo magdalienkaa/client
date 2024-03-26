@@ -24,7 +24,7 @@ const Select = () => {
         const data = await response.json();
         setDormitories(data);
       } catch (error) {
-        console.error("Error fetching dormitories:", error);
+        console.error("Chyba pri získavaní informácií o internátoch:", error);
       }
     };
 
