@@ -141,9 +141,7 @@ const Status = () => {
                 <p>ID študenta: {request.id_student}</p>
               )}
               <p>Status: {request.stav ? request.stav : "Neznámy"}</p>
-              {userSelect &&
-              userSelect.role === "admin" &&
-              request.stav !== "schválené" ? (
+              {userSelect && userSelect.role === "admin" && (
                 <div>
                   <button
                     onClick={() =>
@@ -156,11 +154,10 @@ const Status = () => {
                     Zamietnuť žiadosť
                   </button>
                 </div>
-              ) : null}
+              )}
               {userSelect &&
                 userSelect.role !== "admin" &&
-                (request.stav === "nevybavené" ||
-                  request.stav === "schválené") && (
+                request.stav === "nevybavené" && (
                   <button onClick={() => cancelRequest(request.id)}>
                     Zrušiť žiadosť
                   </button>
