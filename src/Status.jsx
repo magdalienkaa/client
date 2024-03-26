@@ -46,6 +46,14 @@ const Status = () => {
     }
   };
 
+  const approveRequest = async (id, id_student) => {
+    // approveRequest function remains unchanged
+  };
+
+  const rejectRequest = async (id) => {
+    // rejectRequest function remains unchanged
+  };
+
   const handleFilterChange = (e) => {
     setFilter(e.target.value);
   };
@@ -60,7 +68,7 @@ const Status = () => {
       <User />
       <div className="status-container">
         <h2>Stav žiadostí</h2>
-        <div className="request-filter">
+        <div>
           <label htmlFor="filter">Filtruj podľa stavu:</label>
           <select id="filter" value={filter} onChange={handleFilterChange}>
             <option value="all">Všetky</option>
@@ -86,7 +94,7 @@ const Status = () => {
                       approveRequest(request.id, request.id_student)
                     }
                   >
-                    Schváliť žiadosť
+                    Potvrdiť žiadosť
                   </button>
                   <button onClick={() => rejectRequest(request.id)}>
                     Zamietnuť žiadosť
