@@ -74,6 +74,9 @@ const Info = () => {
       </div>
       <div className="info-container">
         <h2>Info</h2>
+        <div className="next top-right">
+          <button onClick={handleNextButtonClick}>Ďalej</button>
+        </div>
         <p>{description}</p>
         <div>
           <h3>Fotky</h3>
@@ -100,7 +103,7 @@ const Info = () => {
           id="map"
           style={{ height: "200px", width: "400px" }}
         ></div>
-        <div className="next">
+        <div className="next bottom-center">
           <button onClick={handleNextButtonClick}>Ďalej</button>
         </div>
       </div>
