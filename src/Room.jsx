@@ -41,11 +41,6 @@ const Room = ({ filters }) => {
 
   const handleSelectRoom = async (id_izba) => {
     try {
-      if (userSelect.id_izba) {
-        showAlert("Už si si zvolil/a izbu.");
-        return;
-      }
-
       const response = await fetch(
         `https://server-production-5a4b.up.railway.app/api/select/${id_izba}`,
         {
@@ -81,7 +76,7 @@ const Room = ({ filters }) => {
       (!filters.locationOnCorridor ||
         room.umiestnenie_na_chodbe === filters.locationOnCorridor) &&
       room.id_izba !== selectedRoom &&
-      !requestStatus
+      !(requestStatus && requestStatus.stav !== "zamietnuté")
     );
   });
 

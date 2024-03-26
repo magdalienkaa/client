@@ -52,10 +52,9 @@ button {
   background: rgb(152, 38, 252);
   color: white;
   padding: 15px;
-  border-radius: 10px;
+  border-radius: 20px;
   cursor: pointer;
   font-family: "Poppins", sans-serif;
-  margin-left: 20px;
   margin-top: 10px;
   justify-content: center;
   box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
@@ -78,7 +77,7 @@ button:active {
   color: hsl(0, 0%, 100%);
   box-shadow: rgb(98, 4, 180);
   transform: translateY(10px);
-  transition: 100ms;
+  transition: 500ms;
 }
 
 .link-btn {
@@ -164,14 +163,21 @@ button:active {
 }
 
 .user img,
-.logout img,
 .help img,
-.home img,
-.back img {
-  width: 2rem;
-  height: 2rem;
+.home img {
+  width: 35px;
+  height: 35px;
 }
 
+.logout img {
+  width: 38px;
+  height: 38px;
+}
+
+.back img {
+  width: 33px;
+  height: 33px;
+}
 .user-name,
 .points {
   margin-right: 10px;
@@ -183,10 +189,6 @@ button:active {
   cursor: pointer;
 }
 
-.icons img {
-  margin-left: 10px;
-  cursor: pointer;
-}
 .info-container {
   background-color: #ffffff;
   border-radius: 10px;
@@ -200,6 +202,10 @@ button:active {
   text-align: justify;
   position: relative;
 }
+.map {
+  width: 90%;
+  height: auto;
+}
 
 .next {
   position: absolute;
@@ -212,8 +218,9 @@ button:active {
 
 .bottom-center {
   position: relative;
-  bottom: 10px;
-  left: 50%;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  text-align: center;
 }
 
 .room-container {
@@ -247,6 +254,7 @@ button:active {
   background-color: #fff;
   border-radius: 20px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
 .filters label,
@@ -339,6 +347,6 @@ textarea {
   overflow: hidden;
 }
 
-.request-filter {
+.status-filter {
   font-family: "Poppins", sans-serif;
 }

@@ -47,11 +47,62 @@ const Status = () => {
   };
 
   const approveRequest = async (id, id_student) => {
-    // approveRequest function remains unchanged
+    try {
+      const response = await fetch(
+        `https://server-production-5a4b.up.railway.app/api/approve/${id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            id_student: id_student,
+          }),
+        }
+      );
+
+      const responseData = await response.json();
+
+      if (response.ok) {
+        const updatedRequests = requests.map((request) =>
+          request.id === id ? { ...request, stav: responseData.stav } : request
+        );
+        setRequests(updatedRequests);
+        console.log("Žiadosť bola úspešne schválená.");
+      } else {
+        console.error("Chyba pri schvaľovaní žiadosti:", responseData.error);
+      }
+    } catch (error) {
+      console.error("Chyba:", error);
+    }
   };
 
   const rejectRequest = async (id) => {
-    // rejectRequest function remains unchanged
+    try {
+      const response = await fetch(
+        `https://server-production-5a4b.up.railway.app/api/reject/${id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      const responseData = await response.json();
+
+      if (response.ok) {
+        const updatedRequests = requests.map((request) =>
+          request.id === id ? { ...request, stav: responseData.stav } : request
+        );
+        setRequests(updatedRequests);
+        console.log("Žiadosť bola úspešne zamietnutá.");
+      } else {
+        console.error("Chyba pri zamietaní žiadosti:", responseData.error);
+      }
+    } catch (error) {
+      console.error("Chyba:", error);
+    }
   };
 
   const handleFilterChange = (e) => {
@@ -70,7 +121,12 @@ const Status = () => {
         <h2>Stav žiadostí</h2>
         <div>
           <label htmlFor="filter">Filtruj podľa stavu:</label>
-          <select id="filter" value={filter} onChange={handleFilterChange}>
+          <select
+            id="filter"
+            value={filter}
+            onChange={handleFilterChange}
+            className="status-filter"
+          >
             <option value="all">Všetky</option>
             <option value="schválené">Schválené</option>
             <option value="zamietnuté">Zamietnuté</option>
@@ -87,7 +143,7 @@ const Status = () => {
               <p>Status: {request.stav ? request.stav : "Neznámy"}</p>
               {userSelect &&
               userSelect.role === "admin" &&
-              request.stav !== "schválená" ? (
+              request.stav !== "schválené" ? (
                 <div>
                   <button
                     onClick={() =>
@@ -103,7 +159,8 @@ const Status = () => {
               ) : null}
               {userSelect &&
                 userSelect.role !== "admin" &&
-                request.stav !== "schválená" && (
+                (request.stav === "nevybavené" ||
+                  request.stav === "schválené") && (
                   <button onClick={() => cancelRequest(request.id)}>
                     Zrušiť žiadosť
                   </button>

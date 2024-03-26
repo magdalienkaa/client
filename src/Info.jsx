@@ -36,8 +36,6 @@ const Info = () => {
   }
 
   async function mapa(latitude, longitude) {
-    console.log("Data fetch MAPA");
-    console.log(latitude, longitude);
     const map = L.map("map").setView([latitude, longitude], 16);
 
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
@@ -64,7 +62,6 @@ const Info = () => {
   useEffect(() => {
     fetchData();
     fetchPhotos();
-    // mapa();
   }, [id]);
 
   return (
@@ -98,10 +95,11 @@ const Info = () => {
             </div>
           ))}
         </div>
+        <h2>Mapa</h2>
         <div
           className="map"
           id="map"
-          style={{ height: "200px", width: "400px" }}
+          style={{ height: "400px", width: "100%" }}
         ></div>
         <div className="next bottom-center">
           <button onClick={handleNextButtonClick}>Ďalej</button>

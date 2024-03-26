@@ -37,7 +37,6 @@ const User = () => {
         {" "}
         <img src="/images/home.svg" alt="Home" />
       </div>
-
       <div className="user" onClick={handleUserStatusClick}>
         <img src="/images/user.svg" alt="User" />
       </div>
