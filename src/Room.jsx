@@ -76,7 +76,9 @@ const Room = ({ filters }) => {
       (!filters.locationOnCorridor ||
         room.umiestnenie_na_chodbe === filters.locationOnCorridor) &&
       room.id_izba !== selectedRoom &&
-      !(requestStatus && requestStatus.stav !== "zamietnuté")
+      !(requestStatus && requestStatus.stav !== "zamietnuté") &&
+      (!filters.roomName ||
+        room.nazov.toLowerCase().includes(filters.roomName.toLowerCase()))
     );
   });
 

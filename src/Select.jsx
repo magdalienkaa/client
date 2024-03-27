@@ -12,6 +12,7 @@ const Select = () => {
     roomType: "",
     reconstructionStatus: "",
     locationOnCorridor: "",
+    roomName: "", // Nový filter pre názov izby
   });
   const [dormitories, setDormitories] = useState([]);
 
@@ -48,6 +49,7 @@ const Select = () => {
       roomType: "",
       reconstructionStatus: "",
       locationOnCorridor: "",
+      roomName: "", // Reset na prázdny reťazec
     });
   };
 
@@ -59,8 +61,8 @@ const Select = () => {
           <label>
             Internát:
             <select
-              name="dormitory"
-              value={filters.dormitory}
+              name="roomName"
+              value={filters.roomName}
               onChange={handleFilterChange}
             >
               <option value="">-- Vyberte internát --</option>
