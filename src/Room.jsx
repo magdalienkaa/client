@@ -9,16 +9,6 @@ const Room = ({ filters }) => {
   const selector = useSelector((state) => state);
   const userSelect = selector.userStore.userData;
 
-  const fetchUserRequest = async (userId, roomId) => {
-    try {
-      const response = await fetch(`/api/user-request/${userId}/${roomId}`);
-      const data = await response.json();
-      setRequestStatus(data);
-    } catch (error) {
-      console.error("Error fetching user request:", error);
-    }
-  };
-
   useEffect(() => {
     const fetchRoomData = async () => {
       try {
@@ -59,7 +49,6 @@ const Room = ({ filters }) => {
 
       setSelectedRoom(id_izba);
       showAlert("Izba bola úspešne zvolená.");
-      fetchUserRequest(userSelect.id_student, id_izba);
     } catch (error) {
       console.error("Chyba pri výbere izby:", error);
     }
