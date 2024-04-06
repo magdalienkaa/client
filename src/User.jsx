@@ -1,11 +1,10 @@
 import React from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "./reducers/UserReducer";
 
 const User = () => {
   const navigate = useNavigate();
-  const location = useLocation();
   const selector = useSelector((state) => state);
   const dispatch = useDispatch();
   const loggedInUserData = selector.userStore.userData;
@@ -26,9 +25,7 @@ const User = () => {
   };
 
   const handleBackClick = () => {
-    if (!location.pathname.includes("/login")) {
-      window.history.back();
-    }
+    window.history.back();
   };
 
   return (
@@ -64,7 +61,13 @@ const User = () => {
         <img src="/images/help.svg" alt="Help" />
       </div>
       {
-        <div className="back" onClick={handleBackClick}>
+        <div
+          className="back"
+          style={{
+            display: window.location.href.includes("/home") ? "none" : "block",
+          }}
+          onClick={handleBackClick}
+        >
           <img src="/images/back.svg" alt="Back" />
         </div>
       }

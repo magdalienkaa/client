@@ -12,7 +12,7 @@ const Select = () => {
     roomType: "",
     reconstructionStatus: "",
     locationOnCorridor: "",
-    roomName: "", // Nový filter pre názov izby
+    roomName: "",
   });
   const [dormitories, setDormitories] = useState([]);
 
@@ -49,7 +49,7 @@ const Select = () => {
       roomType: "",
       reconstructionStatus: "",
       locationOnCorridor: "",
-      roomName: "", // Reset na prázdny reťazec
+      roomName: "",
     });
   };
 

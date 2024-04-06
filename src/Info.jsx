@@ -27,7 +27,7 @@ const Info = () => {
       console.log(data);
       setLatitude(data.suradnice2);
       setLongitude(data.suradnice);
-      console.log("Data fetch");
+
       console.log(latitude, longitude);
       mapa(data.suradnice, data.suradnice2);
     } catch (error) {

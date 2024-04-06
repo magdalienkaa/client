@@ -73,7 +73,7 @@ const Help = () => {
               required
             ></textarea>
           </div>
-          <div className="button-container">
+          <div className="button">
             <button type="submit">Odoslať</button>
           </div>
         </form>

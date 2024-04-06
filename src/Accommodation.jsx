@@ -13,7 +13,7 @@ const Accommodation = (data) => {
         src={`data:image/jpeg;base64,${accommodation.data.fotky}`}
         alt="uvodna_fotka"
       />
-      <div className="icons">
+      <div>
         <Link to={`/info/${accommodation.data.id_internat}`}>
           <button>Vybrať</button>
         </Link>
