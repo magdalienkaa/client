@@ -109,6 +109,17 @@ const Status = () => {
     setFilter(e.target.value);
   };
 
+  const getRequestColor = (stav) => {
+    switch (stav) {
+      case "schválené":
+        return "green";
+      case "zamietnuté":
+        return "red";
+      default:
+        return "black";
+    }
+  };
+
   const filteredRequests =
     filter === "all"
       ? requests
@@ -135,7 +146,11 @@ const Status = () => {
         </div>
         {filteredRequests.length > 0 ? (
           filteredRequests.map((request) => (
-            <div className="request" key={request.id}>
+            <div
+              className="request"
+              key={request.id}
+              style={{ color: getRequestColor(request.stav) }}
+            >
               <p>Číslo izby: {request.cislo_izby}</p>
               {userSelect && userSelect.role === "admin" && (
                 <p>ID študenta: {request.id_student}</p>
@@ -162,6 +177,7 @@ const Status = () => {
                     Zrušiť žiadosť
                   </button>
                 )}
+              <p>Body: {request.body}</p>
             </div>
           ))
         ) : (

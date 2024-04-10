@@ -20,9 +20,6 @@ const User = () => {
   const handleUserStatusClick = () => {
     navigate("/home/status");
   };
-  const handleUserHelpClick = () => {
-    navigate("/home/help");
-  };
 
   const handleBackClick = () => {
     window.history.back();
@@ -57,9 +54,7 @@ const User = () => {
             : null}
         </h3>
       </div>
-      <div className="help" onClick={handleUserHelpClick}>
-        <img src="/images/help.svg" alt="Help" />
-      </div>
+
       {
         <div
           className="back"
