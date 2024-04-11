@@ -6,7 +6,7 @@ const Status = () => {
   const [requests, setRequests] = useState([]);
   const [filter, setFilter] = useState("all");
   const [sortByPoints, setSortByPoints] = useState("");
-  const [sortByTime, setSortByTime] = useState(""); // Default sort is empty
+  const [sortByTime, setSortByTime] = useState("");
   const selector = useSelector((state) => state);
   const userSelect = selector.userStore.userData;
 

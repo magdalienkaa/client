@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
 import { Login } from "./Login";
@@ -8,8 +8,8 @@ import Accommodation from "./Accommodation";
 import Info from "./Info";
 import { useSelector } from "react-redux";
 import Select from "./Select";
-import Help from "./Help";
 import Status from "./Status";
+import Add from "./Add"; // Import komponentu Add
 
 function App() {
   const selector = useSelector((state) => state);
@@ -44,12 +44,12 @@ function App() {
           element={isLoggedIn ? <Select /> : <Navigate to="/login" />}
         />
         <Route
-          path="/home/help"
-          element={isLoggedIn ? <Help /> : <Navigate to="/login" />}
+          path="/status"
+          element={isLoggedIn ? <Status /> : <Navigate to="/login" />}
         />
         <Route
-          path="/home/status"
-          element={isLoggedIn ? <Status /> : <Navigate to="/login" />}
+          path="/add" // Pridaj cestu pre Add komponent
+          element={isLoggedIn ? <Add /> : <Navigate to="/login" />} // Zobraziť Add komponent len ak je používateľ prihlásený
         />
       </Routes>
     </div>

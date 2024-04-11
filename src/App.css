@@ -103,11 +103,13 @@ button:hover {
   object-fit: fill;
   border-radius: 10px;
 }
+/* USER */
 .user-container {
   position: absolute;
   top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
+  right: 0;
+  margin: auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -120,13 +122,14 @@ button:hover {
 }
 
 .user-box {
-  justify-content: flex-start;
   display: flex;
   align-items: center;
 }
 
 .user,
 .home,
+.user-name,
+.points,
 .back {
   margin-right: 1vw;
   cursor: pointer;
@@ -150,6 +153,7 @@ button:hover {
   cursor: pointer;
 }
 
+/* INFO */
 .info-container {
   background-color: #ffffff;
   border-radius: 10px;
@@ -233,36 +237,6 @@ button:hover {
 
 .selected {
   border: 0.2vw solid rgb(12, 226, 12);
-}
-.help-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 15vh;
-  background-color: #fff;
-  padding: 3vw;
-  border-radius: 2vw;
-  box-shadow: 0 1vw 2vw rgba(0, 0, 0, 0.1);
-  margin-bottom: 0.5vw;
-  width: 50%;
-}
-
-.question-box {
-  width: 100%;
-}
-
-label {
-  display: block;
-}
-
-select,
-textarea {
-  width: calc(100% - 2vw);
-  padding: 1vw;
-  border: 0.15vw solid #0d0b0b;
-  border-radius: 1vw;
-  box-sizing: border-box;
-  margin-bottom: 1.5vw;
 }
 
 .photos-container img {
@@ -386,4 +360,26 @@ textarea {
 
 .approve-button:hover {
   background-color: #218838;
+}
+
+/* ADD */
+.menu {
+  position: relative;
+  top: 100%;
+  right: 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.menu div {
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.menu div:hover {
+  background-color: #f0f0f0;
 }
