@@ -4,17 +4,26 @@ import User from "./User";
 
 const Status = () => {
   const [requests, setRequests] = useState([]);
-  const [filter, setFilter] = useState("all"); // Default filter is "all"
+  const [filter, setFilter] = useState("all");
+  const [sortByPoints, setSortByPoints] = useState("");
+  const [sortByTime, setSortByTime] = useState(""); // Default sort is empty
   const selector = useSelector((state) => state);
   const userSelect = selector.userStore.userData;
 
   useEffect(() => {
     const fetchUserRequests = async () => {
       try {
-        const response = await fetch(
-          `https://server-production-5a4b.up.railway.app/api/requests/${userSelect.id_student}`
-        );
+        let url = `https://server-production-5a4b.up.railway.app/api/requests/${userSelect.id_student}`;
 
+        if (sortByPoints) {
+          url += `?sortByPoints=${sortByPoints}`;
+        }
+
+        if (sortByTime) {
+          url += `&sortByTime=${sortByTime}`;
+        }
+
+        const response = await fetch(url);
         const data = await response.json();
         setRequests(data);
       } catch (error) {
@@ -25,7 +34,7 @@ const Status = () => {
     if (userSelect && userSelect.id_student) {
       fetchUserRequests();
     }
-  }, [userSelect]);
+  }, [userSelect, sortByPoints, sortByTime]);
 
   const cancelRequest = async (id) => {
     try {
@@ -109,6 +118,10 @@ const Status = () => {
     setFilter(e.target.value);
   };
 
+  const handleSortChange = (e) => {
+    setSortByPoints(e.target.value);
+  };
+
   const getRequestColor = (stav) => {
     switch (stav) {
       case "schválené":
@@ -130,8 +143,8 @@ const Status = () => {
       <User />
       <div className="status-container">
         <h2>Stav žiadostí</h2>
-        <div>
-          <label htmlFor="filter">Filtruj podľa stavu:</label>
+        <div className="filter-dropdown">
+          <label htmlFor="filter">Zoradiť podľa stavu:</label>
           <select
             id="filter"
             value={filter}
@@ -144,6 +157,36 @@ const Status = () => {
             <option value="nevybavené">Nevybavené</option>
           </select>
         </div>
+        <div className="filter-dropdown">
+          <label htmlFor="sortByTime">Zoradiť podľa času žiadosti:</label>
+          <select
+            id="sortByTime"
+            value={sortByTime}
+            onChange={(e) => setSortByTime(e.target.value)}
+            className="status-filter"
+          >
+            <option value="">Nezoradené</option>
+            <option value="asc">Od najstaršej po najnovšiu</option>
+            <option value="desc">Od najnovšej po najstaršiu</option>
+          </select>
+        </div>
+
+        {userSelect && userSelect.role === "admin" && (
+          <div className="filter-dropdown">
+            <label htmlFor="sortByPoints">Zoradiť podľa bodov:</label>
+            <select
+              id="sortByPoints"
+              value={sortByPoints}
+              onChange={handleSortChange}
+              className="status-filter"
+            >
+              <option value="">Nezoradené</option>
+              <option value="asc">Od najmenej po najviac</option>
+              <option value="desc">Od najviac po najmenej</option>
+            </select>
+          </div>
+        )}
+
         {filteredRequests.length > 0 ? (
           filteredRequests.map((request) => (
             <div
@@ -155,17 +198,22 @@ const Status = () => {
               {userSelect && userSelect.role === "admin" && (
                 <p>ID študenta: {request.id_student}</p>
               )}
-              <p>Status: {request.stav ? request.stav : "Neznámy"}</p>
+              <p>Body: {request.body}</p>
+              <p>Stav: {request.stav ? request.stav : "Neznámy"}</p>
               {userSelect && userSelect.role === "admin" && (
                 <div>
                   <button
                     onClick={() =>
                       approveRequest(request.id, request.id_student)
                     }
+                    className="admin-button approve-button"
                   >
                     Potvrdiť žiadosť
                   </button>
-                  <button onClick={() => rejectRequest(request.id)}>
+                  <button
+                    onClick={() => rejectRequest(request.id)}
+                    className="admin-button reject-button"
+                  >
                     Zamietnuť žiadosť
                   </button>
                 </div>
@@ -173,11 +221,13 @@ const Status = () => {
               {userSelect &&
                 userSelect.role !== "admin" &&
                 request.stav === "nevybavené" && (
-                  <button onClick={() => cancelRequest(request.id)}>
+                  <button
+                    onClick={() => cancelRequest(request.id)}
+                    className="user-button cancel-button"
+                  >
                     Zrušiť žiadosť
                   </button>
                 )}
-              <p>Body: {request.body}</p>
             </div>
           ))
         ) : (

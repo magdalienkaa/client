@@ -60,31 +60,21 @@ button {
   color: white;
   padding: 1em 2em;
   border-radius: 20px;
+  font-size: 1rem;
+  font-weight: bold;
   cursor: pointer;
   font-family: "Poppins", sans-serif;
   margin-top: 1rem;
   display: inline-block;
   box-shadow: 0 1vw 2vw rgba(0, 0, 0, 0.1);
-  letter-spacing: 1px;
   text-transform: uppercase;
   font-size: 1rem;
-  transition: all 0.3s ease;
 }
 
 button:hover {
   background-color: rgb(98, 4, 180);
-  letter-spacing: 3px;
   color: hsl(0, 0%, 100%);
   box-shadow: rgb(98, 4, 180);
-}
-
-button:active {
-  letter-spacing: 3px;
-  background-color: rgb(98, 4, 180);
-  color: hsl(0, 0%, 100%);
-  box-shadow: rgb(98, 4, 180);
-  transform: translateY(10px);
-  transition: 500ms;
 }
 
 .link-btn {
@@ -95,7 +85,7 @@ button:active {
 .accommodation {
   background-color: white;
   border-radius: 20px;
-  padding: 2rem;
+  padding: 1.5rem;
   margin-top: 20%;
   text-align: center;
   box-shadow: 0 1vw 2vw rgba(0, 0, 0, 0.1);
@@ -113,7 +103,6 @@ button:active {
   object-fit: fill;
   border-radius: 10px;
 }
-
 .user-container {
   position: absolute;
   top: 20px;
@@ -131,23 +120,22 @@ button:active {
 }
 
 .user-box {
-  justify-content: center;
+  justify-content: flex-start;
   display: flex;
+  align-items: center;
 }
 
 .user,
-.logout,
-.help,
 .home,
 .back {
-  margin-right: 10px;
+  margin-right: 1vw;
   cursor: pointer;
 }
+
 .user img,
-.help img,
 .home img,
-.logout img,
-.back img {
+.back img,
+.logout img {
   width: 3vw;
   height: 3vw;
 }
@@ -157,9 +145,8 @@ button:active {
   margin-right: 1vw;
 }
 
-.help {
+.logout {
   margin-left: auto;
-  margin-right: 1vw;
   cursor: pointer;
 }
 
@@ -278,6 +265,25 @@ textarea {
   margin-bottom: 1.5vw;
 }
 
+.photos-container img {
+  width: 100%;
+  height: auto;
+  max-width: 350px;
+  max-height: 350px;
+  overflow: hidden;
+}
+
+@media only screen and (max-width: 768px) {
+  .status-container .request p {
+    margin-right: 1vw;
+  }
+
+  .photos-container img {
+    max-width: 100%;
+    max-height: none;
+  }
+}
+/*SELECT*/
 .status-container {
   background-color: #ffffff;
   padding: 2vw;
@@ -299,6 +305,7 @@ textarea {
   color: #333333;
   font-size: 2vw;
   margin-bottom: 2vw;
+  margin-top: 0%;
 }
 
 .status-container .request {
@@ -316,21 +323,67 @@ textarea {
 .status-filter {
   font-family: "Poppins", sans-serif;
 }
-.photos-container img {
-  width: 100%;
-  height: auto;
-  max-width: 350px;
-  max-height: 350px;
-  overflow: hidden;
+
+.filter-dropdown label {
+  display: block;
+  margin-bottom: 1px;
+  font-size: 12px;
 }
 
-@media only screen and (max-width: 768px) {
-  .status-container .request p {
-    margin-right: 1vw;
-  }
+.filter-dropdown select {
+  width: calc(100% - 8px);
+  padding: 8px 30px 8px 10px;
+  border: none;
+  border-radius: 20px;
+  background-color: #c0bbbb32;
+  color: #333;
+  font-size: 12px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='%23333' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px top 50%;
+  background-size: 20px auto;
+}
 
-  .photos-container img {
-    max-width: 100%;
-    max-height: none;
+.filter-dropdown select:focus {
+  outline: none;
+  box-shadow: 0 0 3px rgb(98, 4, 180);
+}
+
+@media screen and (max-width: 600px) {
+  .filter-dropdown select {
+    padding: 8px 20px 8px 10px;
   }
+}
+
+.admin-button,
+.user-button {
+  padding: 10px 12px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-right: 1.5vw;
+  border-radius: 20px;
+}
+
+.reject-button {
+  background-color: #ff5733;
+  color: #fff;
+}
+
+.approve-button {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.reject-button:hover {
+  background-color: #c70000;
+}
+
+.approve-button:hover {
+  background-color: #218838;
 }
