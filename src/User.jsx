@@ -81,9 +81,17 @@ const User = () => {
             : null}
         </h3>
       </div>
-      <div className="back" onClick={handleBackClick} title="Návrat">
-        <img src="/images/back.svg" alt="Back" />
-      </div>
+      {
+        <div
+          className="back"
+          style={{
+            display: window.location.href.includes("/home") ? "none" : "block",
+          }}
+          onClick={handleBackClick}
+        >
+          <img src="/images/back.svg" alt="Back" />
+        </div>
+      }
       <div className="logout" onClick={handleLogout} title="Odhlásenie">
         <img src="/images/logout.svg" alt="Logout" />
       </div>
