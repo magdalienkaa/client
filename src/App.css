@@ -1,3 +1,4 @@
+/* ALL APPLICATION */
 .App {
   min-height: 100vh;
   display: flex;
@@ -16,42 +17,6 @@
 body {
   margin: 0;
   padding: 0;
-}
-
-.auth-form-container,
-.login-form {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-}
-
-.auth-form-container {
-  padding: 2rem;
-  border: 1px solid white;
-  border-radius: 50px;
-  margin: 0.5rem;
-  background: white;
-  width: 90%;
-  max-width: 300px;
-  box-shadow: 0 1vw 2vw rgba(0, 0, 0, 0.1);
-}
-@media only screen and (max-width: 768px) {
-  .auth-form-container {
-    width: 90%;
-  }
-}
-
-label {
-  text-align: left;
-  padding: 0.25rem 0;
-}
-
-input {
-  margin: 0.5rem 0;
-  padding: 1rem;
-  background: white;
-  border-radius: 10px;
-  max-width: 100%;
 }
 
 button {
@@ -77,11 +42,51 @@ button:hover {
   box-shadow: rgb(98, 4, 180);
 }
 
+/* LOGIN */
+.auth-form-container,
+.login-form {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-form-container {
+  padding: 2rem;
+  border: 1px solid white;
+  border-radius: 50px;
+  margin: 0.5rem;
+  background: white;
+  width: 90%;
+  max-width: 300px;
+  box-shadow: 0 1vw 2vw rgba(0, 0, 0, 0.1);
+}
+@media only screen and (max-width: 768px) {
+  .auth-form-container {
+    width: 90%;
+    max-width: 100%;
+  }
+}
+
+label {
+  text-align: left;
+  padding: 0.25rem 0;
+}
+
+input {
+  margin: 0.5rem 0;
+  padding: 1rem;
+  background: white;
+  border-radius: 10px;
+  max-width: 100%;
+}
+
 .link-btn {
   background: none;
   color: black;
   text-decoration: underline;
 }
+
+/* ACCOMMODATION */
 .accommodation {
   background-color: white;
   border-radius: 20px;
@@ -94,8 +99,26 @@ button:hover {
 .accommodation-box {
   display: grid;
   margin: 1rem;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 1rem;
+}
+
+@media only screen and (min-width: 480px) {
+  .accommodation-box {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .accommodation-box {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .accommodation-box {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .image {
@@ -103,6 +126,7 @@ button:hover {
   object-fit: fill;
   border-radius: 10px;
 }
+
 /* USER */
 .user-container {
   position: absolute;
@@ -114,7 +138,7 @@ button:hover {
   align-items: center;
   justify-content: space-between;
   background: white;
-  height: 10vh;
+  height: 10%;
   width: 95%;
   padding: 0 20px;
   border-radius: 20px;
@@ -153,20 +177,33 @@ button:hover {
   cursor: pointer;
 }
 
+@media only screen and (max-width: 768px) {
+  .user img,
+  .home img,
+  .back img,
+  .logout img {
+    width: 5vw;
+    height: 5vw;
+  }
+}
+
 /* INFO */
 .info-container {
   background-color: #ffffff;
   border-radius: 10px;
   padding: 2vw;
-  margin-top: 20vh;
-  margin-bottom: 2vw;
-  margin-left: auto;
-  margin-right: auto;
   width: 95%;
   max-width: 1200px;
   box-shadow: 0 1vw 2vw rgba(0, 0, 0, 0.1);
   text-align: justify;
-  position: relative;
+  position: fixed;
+  top: 18vh;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999;
+  max-height: calc(100vh - 12vw);
+  overflow-y: auto;
+  bottom: 1vw;
 }
 
 .map {
@@ -189,7 +226,37 @@ button:hover {
   margin-top: 1%;
   text-align: center;
 }
+.photos-container {
+  justify-content: center;
+  flex-wrap: wrap;
+}
 
+.photos-container img {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  margin: 0.1rem;
+}
+
+@media only screen and (max-width: 768px) {
+  .info-container {
+    top: 18vh;
+    padding: 5vw;
+    bottom: 1vw;
+    left: 50%;
+  }
+
+  .status-container .request p {
+    margin-right: 1vw;
+  }
+
+  .photos-container img {
+    max-width: 100%;
+    max-height: none;
+  }
+}
+
+/* ROOM */
 .room-container {
   display: flex;
   flex-wrap: wrap;
@@ -208,10 +275,23 @@ button:hover {
   display: flex;
   align-items: center;
 }
+
 .room-box p {
   margin-right: 1vw;
   font-size: 1vw;
 }
+
+@media only screen and (max-width: 768px) {
+  .room-box {
+    padding: 5vw;
+    margin-bottom: 5vw;
+  }
+
+  .room-box p {
+    font-size: 3vw;
+  }
+}
+/* SELECT */
 .filters {
   margin-top: 8vh;
   width: 20vw;
@@ -239,25 +319,22 @@ button:hover {
   border: 0.2vw solid rgb(12, 226, 12);
 }
 
-.photos-container img {
-  width: 100%;
-  height: auto;
-  max-width: 350px;
-  max-height: 350px;
-  overflow: hidden;
-}
-
 @media only screen and (max-width: 768px) {
-  .status-container .request p {
-    margin-right: 1vw;
+  .filters {
+    width: 90vw;
+    padding: 5vw;
   }
 
-  .photos-container img {
-    max-width: 100%;
-    max-height: none;
+  .filters label,
+  .filters select,
+  .filters input {
+    font-size: 3vw;
+    padding: 3vw;
+    border-radius: 3vw;
   }
 }
-/*SELECT*/
+
+/* STATUS */
 .status-container {
   background-color: #ffffff;
   padding: 2vw;

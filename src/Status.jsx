@@ -133,6 +133,18 @@ const Status = () => {
     }
   };
 
+  let sortedRequests = [...requests];
+
+  if (sortByTime === "asc") {
+    sortedRequests = sortedRequests
+      .filter((request) => request.cas_ziadosti)
+      .sort((a, b) => a.cas_ziadosti.localeCompare(b.cas_ziadosti));
+  } else if (sortByTime === "desc") {
+    sortedRequests = sortedRequests
+      .filter((request) => request.cas_ziadosti)
+      .sort((a, b) => a.cas_ziadosti.localeCompare(b.cas_ziadosti));
+  }
+
   const filteredRequests =
     filter === "all"
       ? requests
