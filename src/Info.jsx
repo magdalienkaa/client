@@ -72,7 +72,7 @@ const Info = () => {
       <div className="info-container">
         <h2>Info</h2>
         <div className="next top-right">
-          <button onClick={handleNextButtonClick}>Ďalej</button>
+          <button onClick={handleNextButtonClick}>Vybrať izbu</button>
         </div>
         <p>{description}</p>
         <div>
@@ -102,7 +102,7 @@ const Info = () => {
           style={{ height: "400px", width: "100%" }}
         ></div>
         <div className="next bottom-center">
-          <button onClick={handleNextButtonClick}>Ďalej</button>
+          <button onClick={handleNextButtonClick}>Vybrať izbu</button>
         </div>
       </div>
     </div>

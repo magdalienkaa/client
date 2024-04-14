@@ -27,25 +27,23 @@ const Add = () => {
 
       let endpoint;
       switch (selectedOption) {
-        case "internát":
-          endpoint = "/upload-interns";
-          break;
-        case "študent":
-          endpoint = "/upload-students";
-          break;
-        case "izba":
-          endpoint = "/upload-rooms";
+        case "Študent":
+          endpoint = "upload-students";
           break;
         default:
           alert("Vybrali ste neplatnú možnosť.");
           return;
       }
 
-      await axios.post(endpoint, formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      await axios.post(
+        `https://server-production-5a4b.up.railway.app/api/${endpoint}`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
 
       alert("Súbor úspešne nahraný!");
     } catch (error) {
@@ -56,7 +54,6 @@ const Add = () => {
 
   return (
     <div className="add-container">
-      {" "}
       <User />
       <div className="upload-section">
         <h2>Vyberte, čo chcete nahrať:</h2>
@@ -64,33 +61,11 @@ const Add = () => {
           <label>
             <input
               type="radio"
-              value="internát"
-              checked={selectedOption === "internát"}
-              onChange={() => handleOptionChange("internát")}
-            />
-            Internát
-          </label>
-        </div>
-        <div>
-          <label>
-            <input
-              type="radio"
               value="študent"
-              checked={selectedOption === "študent"}
-              onChange={() => handleOptionChange("študent")}
+              checked={selectedOption === "Študent"}
+              onChange={() => handleOptionChange("Študent")}
             />
             Študent
-          </label>
-        </div>
-        <div>
-          <label>
-            <input
-              type="radio"
-              value="izba"
-              checked={selectedOption === "izba"}
-              onChange={() => handleOptionChange("izba")}
-            />
-            Izba
           </label>
         </div>
         <div className="file-upload">

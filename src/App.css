@@ -314,7 +314,6 @@ input {
   font-size: 1vw;
   font-family: "Poppins", sans-serif;
 }
-
 .selected {
   border: 0.2vw solid rgb(12, 226, 12);
 }

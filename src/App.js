@@ -9,7 +9,7 @@ import Info from "./Info";
 import { useSelector } from "react-redux";
 import Select from "./Select";
 import Status from "./Status";
-import Add from "./Add"; // Import komponentu Add
+import Add from "./Add";
 
 function App() {
   const selector = useSelector((state) => state);
@@ -48,8 +48,8 @@ function App() {
           element={isLoggedIn ? <Status /> : <Navigate to="/login" />}
         />
         <Route
-          path="/add" // Pridaj cestu pre Add komponent
-          element={isLoggedIn ? <Add /> : <Navigate to="/login" />} // Zobraziť Add komponent len ak je používateľ prihlásený
+          path="/add"
+          element={isLoggedIn ? <Add /> : <Navigate to="/login" />}
         />
       </Routes>
     </div>
