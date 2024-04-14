@@ -4,9 +4,10 @@ import User from "./User";
 
 const Status = () => {
   const [requests, setRequests] = useState([]);
+  const [filteredRequests, setfilteredRequests] = useState([]);
   const [filter, setFilter] = useState("all");
   const [sortByPoints, setSortByPoints] = useState("");
-  const [sortByTime, setSortByTime] = useState("");
+  const [sortByTime, setSortByTime] = useState("desc");
   const selector = useSelector((state) => state);
   const userSelect = selector.userStore.userData;
 
@@ -15,17 +16,11 @@ const Status = () => {
       try {
         let url = `https://server-production-5a4b.up.railway.app/api/requests/${userSelect.id_student}`;
 
-        if (sortByPoints) {
-          url += `?sortByPoints=${sortByPoints}`;
-        }
-
-        if (sortByTime) {
-          url += `&sortByTime=${sortByTime}`;
-        }
-
         const response = await fetch(url);
         const data = await response.json();
+        console.log(data);
         setRequests(data);
+        setfilteredRequests(data);
       } catch (error) {
         console.error("Chyba pri načítavaní žiadostí.", error);
       }
@@ -34,7 +29,7 @@ const Status = () => {
     if (userSelect && userSelect.id_student) {
       fetchUserRequests();
     }
-  }, [userSelect, sortByPoints, sortByTime]);
+  }, []);
 
   const cancelRequest = async (id) => {
     try {
@@ -114,6 +109,11 @@ const Status = () => {
     }
   };
 
+  const handleTimeChange = (e) => {
+    console.log(e.target.value);
+    setSortByTime(e.target.value);
+  };
+
   const handleFilterChange = (e) => {
     setFilter(e.target.value);
   };
@@ -133,22 +133,32 @@ const Status = () => {
     }
   };
 
-  let sortedRequests = [...requests];
+  useEffect(() => {
+    let temp = [...requests];
 
-  if (sortByTime === "asc") {
-    sortedRequests = sortedRequests
-      .filter((request) => request.cas_ziadosti)
-      .sort((a, b) => a.cas_ziadosti.localeCompare(b.cas_ziadosti));
-  } else if (sortByTime === "desc") {
-    sortedRequests = sortedRequests
-      .filter((request) => request.cas_ziadosti)
-      .sort((a, b) => a.cas_ziadosti.localeCompare(b.cas_ziadosti));
-  }
+    if (sortByTime === "asc") {
+      const reversedTemp = [...temp].reverse(); // Create a shallow copy and then reverse
+      temp = [...reversedTemp];
+    }
 
-  const filteredRequests =
-    filter === "all"
-      ? requests
-      : requests.filter((request) => request.stav === filter);
+    if (filter === "all") {
+      temp = [...temp];
+    } else {
+      temp = temp.filter((request) => request.stav === filter);
+    }
+
+    if (sortByPoints) {
+      console.log("POINTS");
+      if (sortByPoints === "asc") {
+        temp.sort((a, b) => a.body - b.body); // Sort by points ascending
+      } else {
+        temp.sort((a, b) => b.body - a.body); // Sort by points descending
+      }
+    }
+
+    console.log(temp);
+    setfilteredRequests(temp);
+  }, [filter, sortByPoints, sortByTime]);
 
   return (
     <div>
@@ -174,12 +184,12 @@ const Status = () => {
           <select
             id="sortByTime"
             value={sortByTime}
-            onChange={(e) => setSortByTime(e.target.value)}
+            onChange={handleTimeChange}
             className="status-filter"
           >
-            <option value="">Nezoradené</option>
-            <option value="asc">Od najstaršej po najnovšiu</option>
+            {/* <option value="">Nezoradené</option> */}
             <option value="desc">Od najnovšej po najstaršiu</option>
+            <option value="asc">Od najstaršej po najnovšiu</option>
           </select>
         </div>
 
