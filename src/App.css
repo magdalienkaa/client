@@ -33,7 +33,14 @@ button {
   display: inline-block;
   box-shadow: 0 1vw 2vw rgba(0, 0, 0, 0.1);
   text-transform: uppercase;
-  font-size: 1rem;
+  font-size: 1.2vw;
+}
+
+@media screen and (max-width: 768px) {
+  button {
+    padding: 0.8em 1.5em;
+    font-size: 1vw;
+  }
 }
 
 button:hover {
@@ -143,6 +150,7 @@ input {
   padding: 0 20px;
   border-radius: 20px;
   box-shadow: 0 1vw 2vw rgba(0, 0, 0, 0.1);
+  font-size: 1.4vw;
 }
 
 .user-box {
@@ -169,7 +177,7 @@ input {
 
 .user-name,
 .points {
-  margin-right: 1vw;
+  margin-right: 1.4vw;
 }
 
 .logout {
@@ -182,8 +190,8 @@ input {
   .home img,
   .back img,
   .logout img {
-    width: 5vw;
-    height: 5vw;
+    width: 3vw;
+    height: 3vw;
   }
 }
 
@@ -283,53 +291,54 @@ input {
 
 @media only screen and (max-width: 768px) {
   .room-box {
-    padding: 5vw;
-    margin-bottom: 5vw;
+    padding: 2vw;
+    margin-bottom: 2vw;
+    display: flex;
+    align-items: center;
   }
 
   .room-box p {
-    font-size: 3vw;
+    font-size: 1vw;
   }
+}
+
+.selected {
+  border: 0.2vw solid rgb(12, 226, 12);
 }
 /* SELECT */
 .filters {
   margin-top: 8vh;
   width: 20vw;
-  padding: 2vw;
+  padding: 1.5vw;
   background-color: #fff;
   border-radius: 20px;
   box-shadow: 0 1vw 2vw rgba(0, 0, 0, 0.1);
   text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 .filters label,
 .filters select,
 .filters input {
-  margin-bottom: 1vw;
+  margin-bottom: 0.1vw;
   width: 100%;
   box-sizing: border-box;
-  padding: 1vw;
-  border: 1px solid #ccc;
-  border-radius: 1vw;
+  padding: 0.8vw;
   font-size: 1vw;
   font-family: "Poppins", sans-serif;
-}
-.selected {
-  border: 0.2vw solid rgb(12, 226, 12);
+  border-radius: 1vw;
 }
 
-@media only screen and (max-width: 768px) {
+.filters input {
+  border: 0.09vw solid #00000099;
+}
+
+@media screen and (max-width: 768px) {
   .filters {
-    width: 90vw;
-    padding: 5vw;
-  }
-
-  .filters label,
-  .filters select,
-  .filters input {
-    font-size: 3vw;
-    padding: 3vw;
-    border-radius: 3vw;
+    width: 20%;
+    left: auto;
   }
 }
 
