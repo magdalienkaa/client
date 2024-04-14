@@ -69,9 +69,9 @@ const Status = () => {
 
       if (response.ok) {
         const updatedRequests = requests.map((request) =>
-          request.id === id ? { ...request, stav: responseData.stav } : request
+          request.id === id ? { ...request, stav: "schválené" } : request
         );
-        setRequests(updatedRequests);
+        setfilteredRequests(updatedRequests);
         console.log("Žiadosť bola úspešne schválená.");
       } else {
         console.error("Chyba pri schvaľovaní žiadosti:", responseData.error);
@@ -97,9 +97,9 @@ const Status = () => {
 
       if (response.ok) {
         const updatedRequests = requests.map((request) =>
-          request.id === id ? { ...request, stav: responseData.stav } : request
+          request.id === id ? { ...request, stav: "zamietnuté" } : request
         );
-        setRequests(updatedRequests);
+        setfilteredRequests(updatedRequests);
         console.log("Žiadosť bola úspešne zamietnutá.");
       } else {
         console.error("Chyba pri zamietaní žiadosti:", responseData.error);
@@ -133,6 +133,7 @@ const Status = () => {
     }
   };
 
+  // Filter
   useEffect(() => {
     let temp = [...requests];
 
@@ -160,6 +161,7 @@ const Status = () => {
     setfilteredRequests(temp);
   }, [filter, sortByPoints, sortByTime]);
 
+  console.log(filteredRequests);
   return (
     <div>
       <User />
@@ -221,7 +223,7 @@ const Status = () => {
                 <p>ID študenta: {request.id_student}</p>
               )}
               <p>Body: {request.body}</p>
-              <p>Stav: {request.stav ? request.stav : "Neznámy"}</p>
+              <p>Stav: {request.stav}</p>
               {userSelect && userSelect.role === "admin" && (
                 <div>
                   <button
