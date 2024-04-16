@@ -1,82 +1,66 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React from "react";
 import User from "./User";
 import "./App.css";
 
-const Add = () => {
-  const [selectedFile, setSelectedFile] = useState(null);
-  const [selectedOption, setSelectedOption] = useState(null);
+export default function Magduska() {
+  const [file, setFile] = React.useState(null);
 
+  // spracovanie nahrania suboru
   const handleFileChange = (event) => {
-    setSelectedFile(event.target.files[0]);
-  };
+    const selectedFile = event.target.files[0];
 
-  const handleOptionChange = (option) => {
-    setSelectedOption(option);
-  };
-
-  const handleUpload = async () => {
-    if (!selectedFile || !selectedOption) {
-      alert("Prosím, vyberte súbor a možnosť.");
-      return;
+    // CSV validacia, nie je potrebna podla mna, lebo v inpute su zvolene len .csv koncovky
+    if (selectedFile && selectedFile.type === "text/csv") {
+      setFile(selectedFile);
+      console.log("File uploaded:", selectedFile);
+    } else {
+      alert("Please select a valid CSV file.");
     }
+  };
 
+  // odoslanie suboru na server
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    const formData = new FormData();
+    // tu je to myCSVFile oznacenie, co sa pouziva na serveri
+    formData.append("myCSVFile", file);
+
+    console.log("Uploading file...");
+
+    // POST request na server
     try {
-      const formData = new FormData();
-      formData.append("csv", selectedFile);
+      const response = await fetch("http://127.0.0.1:3000/uploadCSV", {
+        method: "POST",
+        body: formData,
+      });
 
-      let endpoint;
-      switch (selectedOption) {
-        case "Študent":
-          endpoint = "upload-students";
-          break;
-        default:
-          alert("Vybrali ste neplatnú možnosť.");
-          return;
-      }
-
-      await axios.post(
-        `https://server-production-5a4b.up.railway.app/api/${endpoint}`,
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
-
-      alert("Súbor úspešne nahraný!");
+      console.log("File uploaded successfully.");
+      console.log(response);
     } catch (error) {
-      console.error("Chyba pri nahrávaní súboru:", error);
-      alert("Pri nahrávaní súboru sa vyskytla chyba.");
+      console.error("Error uploading the file.");
+      console.error(error);
     }
   };
 
   return (
-    <div className="add-container">
-      <User />
-      <div className="upload-section">
-        <h2>Vyberte, čo chcete nahrať:</h2>
-        <div>
-          <label>
-            <input
-              type="radio"
-              value="študent"
-              checked={selectedOption === "Študent"}
-              onChange={() => handleOptionChange("Študent")}
-            />
-            Študent
-          </label>
-        </div>
-        <div className="file-upload">
-          <input type="file" onChange={handleFileChange} />
-          <button className="upload-button" onClick={handleUpload}>
-            Nahraj súbor
-          </button>
-        </div>
+    <div>
+      <div className="user-containter">
+        <User />
       </div>
+
+      <form onSubmit={handleSubmit}>
+        <div>
+          <input
+            type="file"
+            id="file"
+            name="file"
+            accept=".csv" // CSV subory
+            onChange={handleFileChange}
+          />
+          <button type="submit">Upload</button>
+        </div>
+      </form>
     </div>
   );
-};
-
-export default Add;
+}
