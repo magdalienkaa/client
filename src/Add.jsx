@@ -1,15 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import User from "./User";
 import "./App.css";
 
 export default function Add() {
-  const [file, setFile] = React.useState(null);
+  const [file, setFile] = useState(null);
+  const [dataType, setDataType] = useState(""); // Stav pre typ dát (Internát, Študent, Izba)
 
-  // spracovanie nahrania suboru
+  // Funkcia na spracovanie zmeny výberu typu dát
+  const handleTypeChange = (event) => {
+    setDataType(event.target.value);
+  };
+
+  // Funkcia na spracovanie nahrania súboru
   const handleFileChange = (event) => {
     const selectedFile = event.target.files[0];
 
-    // CSV validacia, nie je potrebna podla mna, lebo v inpute su zvolene len .csv koncovky
+    // CSV validácia
     if (selectedFile && selectedFile.type === "text/csv") {
       setFile(selectedFile);
       console.log("File uploaded:", selectedFile);
@@ -18,12 +24,17 @@ export default function Add() {
     }
   };
 
-  // odoslanie suboru na server
+  // Funkcia na odoslanie súboru na server
   const handleSubmit = async (event) => {
     event.preventDefault();
 
+    if (!dataType) {
+      alert("Please select data type.");
+      return;
+    }
+
     const formData = new FormData();
-    // tu je to myCSVFile oznacenie, co sa pouziva na serveri
+    formData.append("dataType", dataType); // Pridanie typu dát do formData
     formData.append("myCSVFile", file);
 
     console.log("Uploading file...");
@@ -54,11 +65,20 @@ export default function Add() {
 
       <form onSubmit={handleSubmit}>
         <div>
+          <label>Select Data Type:</label>
+          <select value={dataType} onChange={handleTypeChange}>
+            <option value="">Select</option>
+            <option value="internat">Internat</option>
+            <option value="student">Student</option>
+            <option value="izba">Izba</option>
+          </select>
+        </div>
+        <div>
           <input
             type="file"
             id="file"
             name="file"
-            accept=".csv" // CSV subory
+            accept=".csv"
             onChange={handleFileChange}
           />
           <button type="submit">Upload</button>
