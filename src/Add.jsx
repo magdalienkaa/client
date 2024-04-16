@@ -31,7 +31,7 @@ export default function Add() {
     // POST request na server
     try {
       const response = await fetch(
-        `https://server-production-5a4b.up.railway.app/api/uploadCSV`,
+        `https://server-production-5a4b.up.railway.app/api/upload-students`,
         {
           method: "POST",
           body: formData,
