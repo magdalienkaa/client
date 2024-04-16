@@ -2,7 +2,7 @@ import React from "react";
 import User from "./User";
 import "./App.css";
 
-export default function Magduska() {
+export default function Add() {
   const [file, setFile] = React.useState(null);
 
   // spracovanie nahrania suboru
@@ -30,10 +30,13 @@ export default function Magduska() {
 
     // POST request na server
     try {
-      const response = await fetch("http://127.0.0.1:3000/uploadCSV", {
-        method: "POST",
-        body: formData,
-      });
+      const response = await fetch(
+        `https://server-production-5a4b.up.railway.app/api/uploadCSV`,
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
 
       console.log("File uploaded successfully.");
       console.log(response);
