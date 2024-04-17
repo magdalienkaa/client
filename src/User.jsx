@@ -62,7 +62,7 @@ const User = () => {
         )}
       </div>
       <div className="user-name">
-        <h3>
+        <h2>
           {loggedInUserData &&
           loggedInUserData.meno &&
           loggedInUserData.priezvisko &&
@@ -70,16 +70,16 @@ const User = () => {
           loggedInUserData.priezvisko !== "null"
             ? `${loggedInUserData.meno} ${loggedInUserData.priezvisko}`
             : "Admin"}
-        </h3>
+        </h2>
       </div>
       <div className="points">
-        <h3>
+        <h2>
           {loggedInUserData &&
           loggedInUserData.body &&
           loggedInUserData.body !== "null"
             ? `${loggedInUserData.body} bodov`
             : null}
-        </h3>
+        </h2>
       </div>
       {
         <div

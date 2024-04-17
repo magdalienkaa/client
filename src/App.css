@@ -254,10 +254,6 @@ input {
     left: 50%;
   }
 
-  .status-container .request p {
-    margin-right: 1vw;
-  }
-
   .photos-container img {
     max-width: 100%;
     max-height: none;
@@ -362,7 +358,6 @@ input {
 
 .status-container h2 {
   color: #333333;
-  font-size: 2vw;
   margin-bottom: 2vw;
   margin-top: 0%;
 }
@@ -482,7 +477,6 @@ input {
 
 .select {
   font-family: "Poppins", sans-serif;
-  border-radius: 5px;
   border-radius: 20px;
   padding: 8px;
   width: 100%;
