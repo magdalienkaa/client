@@ -481,12 +481,16 @@ input {
 }
 
 .select {
-  font-family: "Poppins", sans-serif; /* Použitie fontu Poppins */
-  border-radius: 5px; /* Zaoblené rohy pre výberový prvok */
+  font-family: "Poppins", sans-serif;
+  border-radius: 5px;
+  border-radius: 20px;
   padding: 8px;
   width: 100%;
 }
 
+.select-data-type {
+  font-family: "Poppins", sans-serif;
+}
 .form-group {
   display: flex;
   flex-direction: column;
