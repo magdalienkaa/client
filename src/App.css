@@ -480,6 +480,13 @@ input {
   box-shadow: 0 1vw 2vw rgba(0, 0, 0, 0.1);
 }
 
+.select {
+  font-family: "Poppins", sans-serif; /* Použitie fontu Poppins */
+  border-radius: 5px; /* Zaoblené rohy pre výberový prvok */
+  padding: 8px;
+  width: 100%;
+}
+
 .form-group {
   display: flex;
   flex-direction: column;
