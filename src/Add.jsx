@@ -63,23 +63,30 @@ export default function Add() {
         <User />
       </div>
 
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Select Data Type:</label>
-          <select value={dataType} onChange={handleTypeChange}>
-            <option value="">Select</option>
-            <option value="internat">Internat</option>
-            <option value="student">Student</option>
+      <form onSubmit={handleSubmit} className="upload-form">
+        <div className="form-group">
+          <label htmlFor="dataType">Vyberte, čo chcete vložiť:</label>
+          <select
+            id="dataType"
+            name="dataType"
+            value={dataType}
+            onChange={handleTypeChange}
+            className="select-data-type"
+          >
+            <option value="">Vyberte</option>
+            <option value="internat">Internát</option>
+            <option value="student">Študent</option>
             <option value="izba">Izba</option>
           </select>
         </div>
-        <div>
+        <div className="form-group">
           <input
             type="file"
             id="file"
             name="file"
             accept=".csv"
             onChange={handleFileChange}
+            className="file-input"
           />
           <button type="submit">Upload</button>
         </div>
