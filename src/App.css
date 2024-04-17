@@ -35,13 +35,6 @@ button {
   text-transform: uppercase;
 }
 
-@media screen and (max-width: 768px) {
-  button {
-    padding: 0.8em 1.5em;
-    font-size: 1vw;
-  }
-}
-
 button:hover {
   background-color: rgb(98, 4, 180);
   color: hsl(0, 0%, 100%);
@@ -149,7 +142,6 @@ input {
   padding: 0 20px;
   border-radius: 20px;
   box-shadow: 0 1vw 2vw rgba(0, 0, 0, 0.1);
-  font-size: 1.4vw;
 }
 
 .user-box {
