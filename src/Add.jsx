@@ -65,7 +65,7 @@ export default function Add() {
 
       <form onSubmit={handleSubmit} className="upload-form">
         <div className="form-group">
-          <label htmlFor="dataType">Vyberte, čo chcete vložiť:</label>
+          <h2 htmlFor="dataType">Vyberte, čo chcete vložiť:</h2>
           <select
             id="dataType"
             name="dataType"
