@@ -59,12 +59,6 @@ button:hover {
   max-width: 300px;
   box-shadow: 0 1vw 2vw rgba(0, 0, 0, 0.1);
 }
-@media only screen and (max-width: 768px) {
-  .auth-form-container {
-    width: 90%;
-    max-width: 100%;
-  }
-}
 
 label {
   text-align: left;
@@ -90,7 +84,7 @@ input {
   background-color: white;
   border-radius: 20px;
   padding: 1.5rem;
-  margin-top: 20%;
+  margin-top: 6rem;
   text-align: center;
   box-shadow: 0 1vw 2vw rgba(0, 0, 0, 0.1);
 }
@@ -129,7 +123,7 @@ input {
 /* USER */
 .user-container {
   position: absolute;
-  top: 20px;
+  top: 1rem;
   left: 0;
   right: 0;
   margin: auto;
@@ -137,7 +131,7 @@ input {
   align-items: center;
   justify-content: space-between;
   background: white;
-  height: 10%;
+  height: 3.5rem;
   width: 95%;
   padding: 0 20px;
   border-radius: 20px;
@@ -162,8 +156,8 @@ input {
 .home img,
 .back img,
 .logout img {
-  width: 3vw;
-  height: 3vw;
+  width: 2rem;
+  height: 2rem;
 }
 
 .user-name,
@@ -174,16 +168,6 @@ input {
 .logout {
   margin-left: auto;
   cursor: pointer;
-}
-
-@media only screen and (max-width: 768px) {
-  .user img,
-  .home img,
-  .back img,
-  .logout img {
-    width: 3vw;
-    height: 3vw;
-  }
 }
 
 /* INFO */
