@@ -65,7 +65,7 @@ const Select = () => {
               value={filters.roomName}
               onChange={handleFilterChange}
             >
-              <option value="">-- Vyberte internát --</option>
+              <option value="">Vyberte internát</option>
               {dormitories.map((dormitory) => (
                 <option key={dormitory.id_internat} value={dormitory.nazov}>
                   {dormitory.nazov}
@@ -81,7 +81,7 @@ const Select = () => {
               value={filters.orientation}
               onChange={handleFilterChange}
             >
-              <option value="">-- Vyberte orientáciu --</option>
+              <option value="">Vyberte orientáciu</option>
               <option value="Sever">Sever</option>
               <option value="Juh">Juh</option>
               <option value="Východ">Východ</option>
@@ -95,7 +95,7 @@ const Select = () => {
               value={filters.block}
               onChange={handleFilterChange}
             >
-              <option value="">-- Vyberte blok --</option>
+              <option value="">Vyberte blok</option>
               <option value="A">A</option>
               <option value="B">B</option>
               <option value="C">C</option>
@@ -120,7 +120,7 @@ const Select = () => {
               value={filters.roomType}
               onChange={handleFilterChange}
             >
-              <option value="">-- Vyberte typ izby --</option>
+              <option value="">Vyberte typ izby</option>
               <option value="Jednolôžková">Jednolôžková</option>
               <option value="Dvojlôžková">Dvojlôžková</option>
               <option value="Trojlôžková">Trojlôžková</option>
@@ -133,7 +133,7 @@ const Select = () => {
               value={filters.reconstructionStatus}
               onChange={handleFilterChange}
             >
-              <option value="">-- Vyberte stav rekonštrukcie --</option>
+              <option value="">Vyberte stav rekonštrukcie</option>
               <option value="Rekonštruovaná">Rekonštruovaná</option>
               <option value="Nezrekonštruovaná">Nezrekonštruovaná</option>
             </select>
@@ -145,7 +145,7 @@ const Select = () => {
               value={filters.locationOnCorridor}
               onChange={handleFilterChange}
             >
-              <option value="">-- Vyberte umiestnenie na chodbe --</option>
+              <option value="">Vyberte umiestnenie</option>
               <option value="Pri spoločných WC">Pri spoločných WC</option>
               <option value="Pri schodoch">Pri schodoch</option>
               <option value="Pri kuchynke">Pri kuchynke</option>
@@ -155,7 +155,9 @@ const Select = () => {
             </select>
           </label>
           <div>
-            <button onClick={handleResetFilters}>Reset</button>
+            <button onClick={handleResetFilters} className="room-button">
+              Reset
+            </button>
           </div>
         </div>
         <Room filters={filters} />

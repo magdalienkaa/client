@@ -82,15 +82,18 @@ const Room = ({ filters }) => {
                 selectedRoom === room.id_izba ? "selected" : ""
               }`}
             >
-              <p style={{ flex: 6 }}>{room.nazov}</p>
-              <p style={{ flex: 1 }}>{room.cislo_izby}</p>
-              <p style={{ flex: 1 }}>{room.orientacia}</p>
-              <p style={{ flex: 1 }}>{room.typ_izby}</p>
-              <p style={{ flex: 1 }}>{room.stav_rekonstrukcie}</p>
-              <p style={{ flex: 4 }}>{room.poschodie}.poschodie</p>
-              <p style={{ flex: 2 }}>BLOK {room.blok}</p>
-              <p style={{ flex: 2 }}>{parseInt(room.cena)}€</p>
-              <button onClick={() => handleSelectRoom(room.id_izba)}>
+              <p className="room-name">{room.nazov}</p>
+              <p>{room.cislo_izby}</p>
+              <p>{room.orientacia}</p>
+              <p>{room.typ_izby}</p>
+              <p>{room.stav_rekonstrukcie}</p>
+              <p>{room.poschodie}.poschodie</p>
+              <p>BLOK {room.blok}</p>
+              <p>{parseInt(room.cena)}€</p>
+              <button
+                onClick={() => handleSelectRoom(room.id_izba)}
+                className="room-button"
+              >
                 Zvoliť
               </button>
             </div>

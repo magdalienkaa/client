@@ -18,12 +18,6 @@ export const Login = (props) => {
       setError("Zadajte email a heslo.");
       return;
     }
-
-    if (password.length < 8) {
-      setError("Heslo musí mať aspoň 8 znakov.");
-      return;
-    }
-
     setError("");
     setLoading(true);
 
@@ -47,6 +41,8 @@ export const Login = (props) => {
       const data = await response.json();
 
       if (response.ok) {
+        localStorage.setItem("token", data.token);
+
         dispatch(login());
         dispatch(addUserData(data.user));
         navigate("/home");

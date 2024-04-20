@@ -189,7 +189,6 @@ const Status = () => {
             onChange={handleTimeChange}
             className="status-filter"
           >
-            {/* <option value="">Nezoradené</option> */}
             <option value="desc">Od najnovšej po najstaršiu</option>
             <option value="asc">Od najstaršej po najnovšiu</option>
           </select>
@@ -218,14 +217,18 @@ const Status = () => {
               key={request.id}
               style={{ color: getRequestColor(request.stav) }}
             >
-              <p>Číslo izby: {request.cislo_izby}</p>
+              <div className="request-info">
+                <p className="info-item">Číslo izby: {request.cislo_izby}</p>
+                {userSelect && userSelect.role === "admin" && (
+                  <p className="info-item">ID študenta: {request.id_student}</p>
+                )}
+                {userSelect && userSelect.role === "admin" && (
+                  <p className="info-item">Body: {request.body}</p>
+                )}
+                <p className="info-item">Stav: {request.stav}</p>
+              </div>
               {userSelect && userSelect.role === "admin" && (
-                <p>ID študenta: {request.id_student}</p>
-              )}
-              <p>Body: {request.body}</p>
-              <p>Stav: {request.stav}</p>
-              {userSelect && userSelect.role === "admin" && (
-                <div>
+                <div className="admin-buttons">
                   <button
                     onClick={() =>
                       approveRequest(request.id, request.id_student)

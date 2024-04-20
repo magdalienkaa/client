@@ -41,6 +41,10 @@ button:hover {
   box-shadow: rgb(98, 4, 180);
 }
 
+h2 {
+  font-size: large;
+}
+
 /* LOGIN */
 .auth-form-container,
 .login-form {
@@ -234,7 +238,6 @@ input {
     max-height: none;
   }
 }
-
 /* ROOM */
 .room-container {
   display: flex;
@@ -242,52 +245,79 @@ input {
   justify-content: flex-start;
   align-items: flex-start;
   padding: 1vw;
-  margin-top: 6vh;
+  margin-top: 7vh;
 }
 
 .room-box {
   background-color: white;
-  padding: 2vw;
+  padding: 1vw;
   border-radius: 20px;
   box-shadow: 0 1vw 2vw rgba(0, 0, 0, 0.1);
   margin-bottom: 2vw;
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  grid-gap: 0.5rem;
   align-items: center;
+  max-width: 70vw;
+  width: 100%;
 }
 
 .room-box p {
-  margin-right: 1vw;
+  margin-right: 0.5vw;
   font-size: 1vw;
 }
 
-@media only screen and (max-width: 768px) {
-  .room-box {
-    padding: 2vw;
-    margin-bottom: 2vw;
-    display: flex;
-    align-items: center;
-  }
-
-  .room-box p {
-    font-size: 1vw;
-  }
+.room-box button {
+  font-size: 1.2vw;
 }
 
 .selected {
   border: 0.2vw solid rgb(12, 226, 12);
 }
+
+.room-button {
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  font-size: 1.2vw;
+  background: rgb(152, 38, 252);
+  padding: 1em 2em;
+  border-radius: 20px;
+}
+.room-name {
+  font-weight: bold;
+  color: rgb(152, 38, 252);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+@media only screen and (max-width: 768px) {
+  .room-box p {
+    font-size: 1.8vw;
+  }
+
+  .room-box {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 80vw;
+  }
+
+  .room-button {
+    font-size: 1.8vw;
+  }
+}
+
 /* SELECT */
 .filters {
-  margin-top: 8vh;
-  width: 20vw;
-  padding: 1.5vw;
+  margin-top: 3rem;
+  width: 20%;
+  padding: 1vw;
   background-color: #fff;
   border-radius: 20px;
   box-shadow: 0 1vw 2vw rgba(0, 0, 0, 0.1);
   text-align: center;
   display: flex;
-  align-items: center;
   flex-direction: column;
+  margin-left: 0;
 }
 
 .filters label,
@@ -306,10 +336,11 @@ input {
   border: 0.09vw solid #00000099;
 }
 
-@media screen and (max-width: 768px) {
-  .filters {
-    width: 20%;
-    left: auto;
+@media only screen and (max-width: 768px) {
+  .filters label,
+  .filters select,
+  .filters input {
+    font-size: 1.5vw;
   }
 }
 
@@ -347,10 +378,25 @@ input {
 
 .status-container .request p {
   margin: 0;
-  margin-right: 2vw;
+  margin-right: 4rem;
 }
 .status-filter {
   font-family: "Poppins", sans-serif;
+}
+
+.request-info {
+  display: flex;
+  align-items: center;
+}
+
+.info-item {
+  margin: 0;
+  margin-right: 2vw;
+}
+
+.admin-buttons {
+  display: flex;
+  align-items: center;
 }
 
 .filter-dropdown label {
