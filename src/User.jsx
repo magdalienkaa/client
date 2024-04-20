@@ -11,6 +11,8 @@ const User = () => {
   const [showMenu, setShowMenu] = useState(false);
 
   const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("userRole");
     dispatch(logout());
     navigate("/login");
   };
