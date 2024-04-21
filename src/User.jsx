@@ -44,10 +44,16 @@ const User = () => {
       </div>
       <div
         className="user"
-        onMouseEnter={() => loggedInUserData.role === "admin" && toggleMenu()}
-        onMouseLeave={() => loggedInUserData.role === "admin" && toggleMenu()}
+        onMouseEnter={() =>
+          loggedInUserData && loggedInUserData.role === "admin" && toggleMenu()
+        }
+        onMouseLeave={() =>
+          loggedInUserData && loggedInUserData.role === "admin" && toggleMenu()
+        }
         onClick={() =>
-          loggedInUserData.role === "student" && handleStatusClick()
+          loggedInUserData &&
+          loggedInUserData.role === "student" &&
+          handleStatusClick()
         }
         title="Možnosti"
       >
