@@ -240,12 +240,14 @@ input {
 }
 /* ROOM */
 .room-container {
+  flex-grow: 1;
+  padding: 1vw;
+  margin-top: 5rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
   align-items: flex-start;
-  padding: 1vw;
-  margin-top: 7vh;
+  width: 100%;
 }
 
 .room-box {
@@ -259,7 +261,7 @@ input {
   grid-gap: 0.5rem;
   align-items: center;
   max-width: 70vw;
-  width: 100%;
+  margin-right: 1vw;
 }
 
 .room-box p {
@@ -308,7 +310,6 @@ input {
 
 /* SELECT */
 .filters {
-  margin-top: 3rem;
   width: 20%;
   padding: 1vw;
   background-color: #fff;
@@ -318,6 +319,10 @@ input {
   display: flex;
   flex-direction: column;
   margin-left: 0;
+  float: left;
+  box-sizing: border-box;
+  margin-right: 1vw;
+  margin-left: 1vw;
 }
 
 .filters label,

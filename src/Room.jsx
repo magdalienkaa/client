@@ -72,7 +72,7 @@ const Room = ({ filters }) => {
   });
 
   return (
-    <div className="room-container">
+    <div>
       <div>
         {filteredRooms.length > 0 ? (
           filteredRooms.map((room) => (
