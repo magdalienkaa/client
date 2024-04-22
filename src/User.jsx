@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import { addUserData } from "./reducers/UserReducer";
 import { logout } from "./reducers/UserReducer";
 
 const User = () => {
@@ -9,6 +10,38 @@ const User = () => {
   const dispatch = useDispatch();
   const loggedInUserData = selector.userStore.userData;
   const [showMenu, setShowMenu] = useState(false);
+  const userSelect = selector.userStore.userData;
+
+  const [fetchDone, setFetchDone] = useState(false);
+
+  useEffect(() => {
+    const fetchMe = async () => {
+      const token = localStorage.getItem("token");
+
+      try {
+        const response = await fetch(
+          `https://server-production-5a4b.up.railway.app/api/me`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              token: token,
+            }),
+          }
+        );
+
+        const responseData = await response.json();
+
+        dispatch(addUserData(responseData.user));
+        setFetchDone(true);
+      } catch (error) {
+        console.error("Chyba:", error);
+      }
+    };
+    fetchMe();
+  }, []);
 
   const handleLogout = () => {
     localStorage.removeItem("token");
@@ -45,20 +78,18 @@ const User = () => {
       <div
         className="user"
         onMouseEnter={() =>
-          loggedInUserData && loggedInUserData.role === "admin" && toggleMenu()
+          userSelect && userSelect.role === "admin" && toggleMenu()
         }
         onMouseLeave={() =>
-          loggedInUserData && loggedInUserData.role === "admin" && toggleMenu()
+          userSelect && userSelect.role === "admin" && toggleMenu()
         }
         onClick={() =>
-          loggedInUserData &&
-          loggedInUserData.role === "student" &&
-          handleStatusClick()
+          userSelect && userSelect.role === "student" && handleStatusClick()
         }
         title="Možnosti"
       >
         <img src="/images/user.svg" alt="User" />
-        {showMenu && loggedInUserData.role === "admin" && (
+        {showMenu && userSelect && userSelect.role === "admin" && (
           <div className="menu">
             <div onClick={handleStatusClick} title="Stav žiadostí">
               Stav žiadostí
@@ -71,14 +102,11 @@ const User = () => {
       </div>
       <div className="user-name">
         <h2>
-          {loggedInUserData &&
-          loggedInUserData.meno &&
-          loggedInUserData.priezvisko &&
-          loggedInUserData.meno !== "null" &&
-          loggedInUserData.priezvisko !== "null"
+          {userSelect && userSelect.role != "admin"
             ? `${loggedInUserData.meno} ${loggedInUserData.priezvisko}`
-            : "Admin"}
+            : ""}
         </h2>
+        <h2>{userSelect && userSelect.role === "admin" ? "Admin" : ""}</h2>
       </div>
       <div className="points">
         <h2>

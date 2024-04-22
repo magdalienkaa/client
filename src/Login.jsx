@@ -39,10 +39,10 @@ export const Login = (props) => {
       );
 
       const data = await response.json();
-
+      console.log(data);
       if (response.ok) {
         localStorage.setItem("token", data.token);
-        localStorage.setItem("userRole", data.role);
+        // localStorage.setItem("userRole", data.user.role);
 
         dispatch(login());
         dispatch(addUserData(data.user));

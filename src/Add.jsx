@@ -49,6 +49,10 @@ export default function Add() {
         }
       );
 
+      // const response = await fetch(`http://localhost:5000/api/uploadstudents`, {
+      //   method: "POST",
+      //   body: formData,
+      // });
       console.log("File uploaded successfully.");
       console.log(response);
     } catch (error) {

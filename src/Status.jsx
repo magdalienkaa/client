@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { addUserData } from "./reducers/UserReducer";
 import User from "./User";
 
 const Status = () => {
@@ -9,16 +10,50 @@ const Status = () => {
   const [sortByPoints, setSortByPoints] = useState("");
   const [sortByTime, setSortByTime] = useState("desc");
   const selector = useSelector((state) => state);
+  const dispatch = useDispatch();
   const userSelect = selector.userStore.userData;
+
+  const [fetchDone, setFetchDone] = useState(false);
+
+  useEffect(() => {
+    const fetchMe = async () => {
+      const token = localStorage.getItem("token");
+
+      try {
+        const response = await fetch(
+          `https://server-production-5a4b.up.railway.app/api/me`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              token: token,
+            }),
+          }
+        );
+
+        const responseData = await response.json();
+
+        dispatch(addUserData(responseData.user));
+        setFetchDone(true);
+      } catch (error) {
+        console.error("Chyba:", error);
+      }
+    };
+    fetchMe();
+  }, []);
 
   useEffect(() => {
     const fetchUserRequests = async () => {
+      if (!userSelect) return;
+
       try {
         let url = `https://server-production-5a4b.up.railway.app/api/requests/${userSelect.id_student}`;
 
         const response = await fetch(url);
         const data = await response.json();
-        console.log(data);
+
         setRequests(data);
         setfilteredRequests(data);
       } catch (error) {
@@ -26,10 +61,8 @@ const Status = () => {
       }
     };
 
-    if (userSelect && userSelect.id_student) {
-      fetchUserRequests();
-    }
-  }, []);
+    fetchUserRequests();
+  }, [fetchDone]);
 
   const cancelRequest = async (id) => {
     try {
@@ -110,7 +143,6 @@ const Status = () => {
   };
 
   const handleTimeChange = (e) => {
-    console.log(e.target.value);
     setSortByTime(e.target.value);
   };
 
@@ -149,7 +181,6 @@ const Status = () => {
     }
 
     if (sortByPoints) {
-      console.log("POINTS");
       if (sortByPoints === "asc") {
         temp.sort((a, b) => a.body - b.body); // Sort by points ascending
       } else {
@@ -157,11 +188,9 @@ const Status = () => {
       }
     }
 
-    console.log(temp);
     setfilteredRequests(temp);
   }, [filter, sortByPoints, sortByTime]);
 
-  console.log(filteredRequests);
   return (
     <div>
       <User />
