@@ -1,6 +1,5 @@
 /* ALL APPLICATION */
 .App {
-  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,9 +11,14 @@
 
   color: black;
   font-family: "Poppins", sans-serif;
+  width: 100%;
+  min-height: 100vh;
 }
 
+html,
 body {
+  width: 100%;
+  height: 100%;
   margin: 0;
   padding: 0;
 }
@@ -184,13 +188,14 @@ input {
   box-shadow: 0 1vw 2vw rgba(0, 0, 0, 0.1);
   text-align: justify;
   position: fixed;
-  top: 18vh;
+  top: 6rem;
   left: 50%;
   transform: translateX(-50%);
   z-index: 999;
   max-height: calc(100vh - 12vw);
   overflow-y: auto;
   bottom: 1vw;
+  margin: 0;
 }
 
 .map {
@@ -219,23 +224,21 @@ input {
 }
 
 .photos-container img {
-  width: 300px;
-  height: 300px;
-  object-fit: cover;
+  width: calc(33.33% - 0.2rem); /* Adjusted width */
+  height: 30rem;
   margin: 0.1rem;
+  object-fit: cover;
 }
 
 @media only screen and (max-width: 768px) {
-  .info-container {
-    top: 18vh;
-    padding: 5vw;
-    bottom: 1vw;
-    left: 50%;
-  }
-
   .photos-container img {
-    max-width: 100%;
-    max-height: none;
+    width: calc(50% - 0.2rem); /* Adjusted width for smaller screens */
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .photos-container img {
+    width: calc(100% - 0.2rem); /* Adjusted width for even smaller screens */
   }
 }
 /* ROOM */
@@ -257,16 +260,19 @@ input {
   box-shadow: 0 1vw 2vw rgba(0, 0, 0, 0.1);
   margin-bottom: 2vw;
   display: grid;
-  grid-template-columns: repeat(9, 1fr);
+  grid-template-columns: 4fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-gap: 0.5rem;
   align-items: center;
   max-width: 70vw;
   margin-right: 1vw;
+  justify-content: space-between;
 }
 
 .room-box p {
   margin-right: 0.5vw;
   font-size: 1vw;
+  display: flex;
+  justify-content: flex-start;
 }
 
 .room-box button {
@@ -365,6 +371,7 @@ input {
   max-height: calc(100vh - 12vw);
   overflow-y: auto;
   bottom: 1vw;
+  align-items: baseline;
 }
 
 .status-container h2 {
@@ -376,7 +383,7 @@ input {
 .status-container .request {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: baseline;
   padding: 1vw;
   border-bottom: 0.1vw solid #dddddd;
 }
@@ -391,12 +398,14 @@ input {
 
 .request-info {
   display: flex;
-  align-items: center;
+  align-items: baseline; /* Align items based on their baselines */
+  flex-grow: 1; /* Allow items to grow to occupy the available space */
 }
 
 .info-item {
   margin: 0;
   margin-right: 2vw;
+  flex: 1; /* Allow items to grow equally */
 }
 
 .admin-buttons {
@@ -448,6 +457,9 @@ input {
   text-transform: uppercase;
   margin-right: 1.5vw;
   border-radius: 20px;
+}
+.empty-space {
+  width: 9rem;
 }
 
 .reject-button {

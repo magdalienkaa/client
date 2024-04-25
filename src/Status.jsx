@@ -255,35 +255,47 @@ const Status = () => {
                   <p className="info-item">Body: {request.body}</p>
                 )}
                 <p className="info-item">Stav: {request.stav}</p>
-              </div>
-              {userSelect && userSelect.role === "admin" && (
+
+                {/* Conditionally render the admin buttons */}
                 <div className="admin-buttons">
-                  <button
-                    onClick={() =>
-                      approveRequest(request.id, request.id_student)
-                    }
-                    className="admin-button approve-button"
-                  >
-                    Potvrdiť žiadosť
-                  </button>
-                  <button
-                    onClick={() => rejectRequest(request.id)}
-                    className="admin-button reject-button"
-                  >
-                    Zamietnuť žiadosť
-                  </button>
+                  {userSelect && userSelect.role === "admin" && (
+                    <>
+                      <button
+                        onClick={() =>
+                          approveRequest(request.id, request.id_student)
+                        }
+                        className="admin-button approve-button"
+                      >
+                        Potvrdiť žiadosť
+                      </button>
+                      <button
+                        onClick={() => rejectRequest(request.id)}
+                        className="admin-button reject-button"
+                      >
+                        Zamietnuť žiadosť
+                      </button>
+                    </>
+                  )}
+                  {/* Render an empty space if user-button is not needed */}
+                  {userSelect &&
+                    userSelect.role !== "admin" &&
+                    request.stav !== "nevybavené" && (
+                      <div className="empty-space" />
+                    )}
                 </div>
-              )}
-              {userSelect &&
-                userSelect.role !== "admin" &&
-                request.stav === "nevybavené" && (
-                  <button
-                    onClick={() => cancelRequest(request.id)}
-                    className="user-button cancel-button"
-                  >
-                    Zrušiť žiadosť
-                  </button>
-                )}
+
+                {/* Render user-button */}
+                {userSelect &&
+                  userSelect.role !== "admin" &&
+                  request.stav === "nevybavené" && (
+                    <button
+                      onClick={() => cancelRequest(request.id)}
+                      className="user-button cancel-button"
+                    >
+                      Zrušiť žiadosť
+                    </button>
+                  )}
+              </div>
             </div>
           ))
         ) : (

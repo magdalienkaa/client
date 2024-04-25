@@ -88,14 +88,13 @@ const Info = () => {
                       key={index}
                       src={`data:image/jpeg;base64,${photo.fotka}`}
                       alt={`Photo ${index + 1}`}
-                      className="photo"
                     />
                   ))}
               </div>
             </div>
           ))}
         </div>
-        <h2>Mapa</h2>
+        <h3>Mapa</h3>
         <div
           className="map"
           id="map"
