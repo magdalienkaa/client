@@ -73,7 +73,7 @@ const Room = ({ filters }) => {
 
   return (
     <div>
-      <div>
+      <div className="room">
         {filteredRooms.length > 0 ? (
           filteredRooms.map((room) => (
             <div
@@ -99,7 +99,7 @@ const Room = ({ filters }) => {
             </div>
           ))
         ) : (
-          <p>Kritériam nevyhovujú žiadne izby.</p>
+          <p className="text">Kritériam nevyhovujú žiadne izby.</p>
         )}
       </div>
     </div>

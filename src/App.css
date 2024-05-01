@@ -313,6 +313,19 @@ input {
     font-size: 1.8vw;
   }
 }
+.text {
+  width: 100%;
+  background-color: white;
+  padding: 1vw;
+  border-radius: 20px;
+  box-shadow: 0 1vw 2vw rgba(0, 0, 0, 0.1);
+  margin-bottom: 2vw;
+  display: grid;
+  grid-template-columns: 4fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 0.5rem;
+  max-width: 70vw;
+  margin-right: 1vw;
+}
 
 /* SELECT */
 .filters {
